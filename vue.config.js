@@ -32,7 +32,7 @@ module.exports = {
         'style-resources-loader': {
             preProcessor: 'less',
             patterns: [
-                path.resolve(__dirname, './src/common/style/setting.less'),
+                path.resolve(__dirname, './src/common/style/variables.less'),
             ]
         }
     }
