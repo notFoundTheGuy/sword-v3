@@ -1,7 +1,13 @@
 <template>
-	<div>
-		<MenuTree :menu="menu" />
-	</div>
+	<section>
+		<div class="main-menu">
+			<MenuTree :menu="menu" />
+		</div>
+
+		<div class="main-content">
+			asd
+		</div>
+	</section>
 </template>
 
 <script lang="ts">
@@ -9,8 +15,8 @@ import { defineComponent } from 'vue';
 import MenuTree from '_c/MenuTree.vue';
 
 export default defineComponent({
-    name: 'Blog',
-    components: { MenuTree },
+	name: 'Blog',
+	components: { MenuTree },
 	data() {
 		return {
 			menu: [
@@ -42,6 +48,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>
