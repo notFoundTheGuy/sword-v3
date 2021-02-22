@@ -45,7 +45,7 @@ export default defineComponent({
 					link: '/home',
 				},
 				{
-					name: '博客',
+					name: 'blog',
 					link: '/blog',
 				},
 				// {

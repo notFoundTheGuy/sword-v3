@@ -1,20 +1,35 @@
 <template>
-	<header>
-		<TopBar />
-	</header>
-	<div class="main-layout">
-		<router-view />
-	</div>
+	<template v-if="isFullPage">
+        <router-view />
+    </template>
+	<template v-else>
+		<header>
+			<TopBar />
+		</header>
+		<div class="main-layout">
+			<router-view />
+		</div>
+	</template>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TopBar from '@/views/TopBar.vue';
 
+// names
+const FULL_PAGES = [
+    'Writer'
+];
 export default defineComponent({
 	name: 'App',
 	components: {
 		TopBar,
+	},
+	computed: {
+		isFullPage() {
+            // @ts-ignore
+            return FULL_PAGES.indexOf(this.$route.name) > -1;
+        },
 	},
 });
 </script>
@@ -42,8 +57,8 @@ export default defineComponent({
 			margin-right: 20px;
 		}
 		> .main-content {
-            background: #fff;
-            flex: 1;
+			background: #fff;
+			flex: 1;
 		}
 	}
 }

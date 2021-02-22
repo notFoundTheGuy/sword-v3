@@ -12,5 +12,15 @@ app.use(store)
 	.use(router)
 	.mount('#app');
 
-// app.config.globalProperties.defineComponent = defineComponent;
-app.config.performance = true
+app.config.performance = true;
+
+// 全局配置
+import axios from 'axios';
+app.config.globalProperties.$post = axios.post;
+app.config.globalProperties.$get = axios.get;
+declare module '@vue/runtime-core' {
+	interface ComponentCustomProperties {
+		$post: any;
+		$get: any;
+	}
+}
