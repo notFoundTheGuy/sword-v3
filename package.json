@@ -7,6 +7,9 @@
         "build": "vue-cli-service build"
     },
     "dependencies": {
+        "@bytemd/vue": "^1.4.0",
+        "@kangc/v-md-editor": "^2.2.1",
+        "axios": "^0.21.1",
         "core-js": "^3.6.5",
         "style-resources-loader": "^1.4.1",
         "vue": "^3.0.0",

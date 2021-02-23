@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
 import Blog from '../pages/Blog.vue';
+import Writer from '../pages/Writer.vue';
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -13,6 +14,13 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Blog',
         component: Blog
     },
+    {
+        path: '/writer',
+        name: 'Writer',
+        component: Writer
+        // 需要返回promise
+        // component: () => require('../pages/Writer')
+    }
 ];
 
 const router = createRouter({
