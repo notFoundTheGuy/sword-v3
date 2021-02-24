@@ -14,9 +14,8 @@ VueMarkdownEditor.use(vuepressTheme);
 let app = createApp(App);
 app.use(store)
 	.use(router)
-    .use(VueMarkdownEditor)
+	.use(VueMarkdownEditor)
 	.mount('#app');
-    
 
 // 样式入口
 require('./common/style/index.less');
@@ -31,3 +30,7 @@ declare module '@vue/runtime-core' {
 		$get: any;
 	}
 }
+
+// 全局组件
+import Icon from '@c/Icon.vue';
+app.component('Icon', Icon);

@@ -37,6 +37,8 @@ export default defineComponent({
 <style lang="less">
 #app {
 	height: 100%;
+    color: @text-color;
+    font-size: @font-m;
 }
 
 .main-layout {

@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="main-menu">
-			<MenuTree :menu="menu" />
+			<MenuList :menu="menu" />
 		</div>
 
 		<div class="main-content">
@@ -12,11 +12,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import MenuTree from '_c/MenuTree.vue';
+import MenuList from '@v/MenuList.vue';
 
 export default defineComponent({
 	name: 'Blog',
-	components: { MenuTree },
+	components: { MenuList },
 	data() {
 		return {
 			menu: [
