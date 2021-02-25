@@ -3,6 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import axios from './axios';
+import qs from 'qs';
 
 // v-md-editor
 import VueMarkdownEditor from '@kangc/v-md-editor';
@@ -24,10 +25,12 @@ require('./common/style/index.less');
 app.config.performance = true;
 app.config.globalProperties.$post = axios.post;
 app.config.globalProperties.$get = axios.get;
+app.config.globalProperties.$qs = qs;
 declare module '@vue/runtime-core' {
 	interface ComponentCustomProperties {
 		$post: any;
 		$get: any;
+		$qs: any;
 	}
 }
 

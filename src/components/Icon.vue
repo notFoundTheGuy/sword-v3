@@ -1,5 +1,5 @@
 <template>
-	<svg class="lj-icon" :class="[klass, iconName]" :style="_style" @click="onClick">
+	<svg class="lj-icon" :class="[klass, iconName]" :style="_style">
 		<use :xlink:href="'#' + iconName"></use>
 	</svg>
 </template>
@@ -45,12 +45,7 @@ export default defineComponent({
 		titleName(): any {
 			return this.title ? 'data-title' : null;
 		},
-	},
-	methods: {
-		onClick() {
-			this.$emit('click');
-		},
-	},
+	}
 });
 </script>
 

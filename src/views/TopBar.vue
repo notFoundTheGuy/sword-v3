@@ -15,9 +15,16 @@
 					{{ item.name }}
 				</li>
 			</ul>
-			<div class="search-box" v-show="showSearch">
-				<input type="text" placeholder="请输入组件名称" maxlength="20" />
-			</div>
+
+            <div>
+                <div class="search-box" v-show="showSearch" v-if="isComponents">
+                    <input type="text" placeholder="请输入组件名称" maxlength="20" />
+                </div>
+
+                <div v-if="isBlog">
+                    <button class="ghost large" @click="$router.push('/writer')">写文章</button>
+                </div>
+            </div>
 		</div>
 	</header>
 </template>
@@ -35,6 +42,14 @@ export default defineComponent({
 		showSearch: {
 			type: [String, Boolean],
 			default: true,
+		},
+	},
+	computed: {
+		isBlog(): boolean {
+			return this.$route.name === 'Blog';
+		},
+		isComponents(): boolean {
+			return this.$route.name === 'Components';
 		},
 	},
 	data() {
@@ -64,7 +79,6 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 header {
 	height: @headerHeight;
