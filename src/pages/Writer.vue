@@ -2,7 +2,7 @@
 	<div class="md-wrap">
 		<div class="header">
 			<input type="text" v-model="title" placeholder="请输入标题" />
-			<button @click="onSave">保存</button>
+			<A-Button type="primary" @click="onSave">保存</A-Button>
 		</div>
 
 		<v-md-editor v-model="content" height="94vh"></v-md-editor>

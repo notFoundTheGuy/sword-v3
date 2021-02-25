@@ -56,13 +56,21 @@ export default defineComponent({
 					name: value,
 				})
 			).then((res: any) => {
-				alert('添加成功');
+                this.$notify.success({
+                    message: '通知',
+                    description: '添加成功',
+                    duration: 2
+                });
 				this.getDir();
 			});
 		},
 		onDirDel(item: any) {
 			this.$get('/directory/del?id=' + item._id).then((res: any) => {
-				alert('删除成功');
+				this.$notify.success({
+                    message: '通知',
+                    description: '删除成功',
+                    duration: 2
+                });
 				this.getDir();
 			});
 		},

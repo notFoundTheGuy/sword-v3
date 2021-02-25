@@ -44,7 +44,7 @@ export default defineComponent({
 .main-layout {
 	position: relative;
 	top: 15px;
-	height: calc(100% - @headerHeight - 20px);
+	height: calc(~"100% - @{headerHeight} - 20px");
 	overflow-y: auto;
 	border: 1px solid red;
 	> section {
