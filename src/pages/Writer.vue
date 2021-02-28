@@ -2,7 +2,16 @@
 	<div class="md-wrap">
 		<div class="header">
 			<input type="text" v-model="title" placeholder="请输入标题" />
-			<A-Button type="primary" @click="onSave">保存</A-Button>
+
+			<A-Space>
+				<A-Select v-model:value="directory" style="width: 200px;" placeholder="请选择目录">
+					<A-Select-Option :value="item._id" v-for="(item, index) in menu" :key="index">
+						{{ item.name }}
+					</A-Select-Option>
+				</A-Select>
+				<A-Button type="primary" @click="onSave">保存</A-Button>
+				<A-Button type="primary" @click="back">返回</A-Button>
+			</A-Space>
 		</div>
 
 		<v-md-editor v-model="content" height="94vh"></v-md-editor>
@@ -18,20 +27,43 @@ export default defineComponent({
 		return {
 			title: '',
 			content: '',
+			directory: null,
+			menu: [],
 		};
 	},
-	created() {},
+	created() {
+		this.getDir();
+	},
 	methods: {
 		onSave() {
 			this.toSubmit();
 		},
-		toSubmit() {
-			let params = new FormData();
-			params.append('title', this.title);
-			params.append('content', this.content);
-			this.$post('/article/add', params).then(function(response: any) {
-				console.log(response);
+		getDir() {
+			this.$get('/directory/get').then((res: any) => {
+				this.menu = res.data;
 			});
+		},
+		toSubmit() {
+			this.$post(
+				'/article/add',
+				this.$qs.stringify({
+					title: this.title,
+					content: this.content,
+					dir_id: this.directory,
+				})
+			).then((res: any) => {
+				this.$notify.success({
+					message: '通知',
+					description: '添加成功',
+					duration: 2,
+				});
+                setTimeout(() => {
+                    this.$router.push('/blog');
+                }, 800);
+			});
+		},
+		back() {
+			window.history.back();
 		},
 	},
 });

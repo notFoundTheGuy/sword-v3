@@ -5,15 +5,18 @@ import store from './store';
 
 // v-md-editor
 import VueMarkdownEditor from '@kangc/v-md-editor';
+import VMdPreview from '@kangc/v-md-editor/lib/preview';
 import '@kangc/v-md-editor/lib/style/base-editor.css';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
 VueMarkdownEditor.use(vuepressTheme);
+VMdPreview.use(vuepressTheme);
 
 let app = createApp(App);
 app.use(store)
 	.use(router)
 	.use(VueMarkdownEditor)
+	.use(VMdPreview)
 	.mount('#app');
 
 // 样式入口
@@ -26,7 +29,7 @@ import qs from 'qs';
 app.config.globalProperties.$post = axios.post;
 app.config.globalProperties.$get = axios.get;
 app.config.globalProperties.$qs = qs;
-import { notification } from "ant-design-vue";
+import { notification } from 'ant-design-vue';
 app.config.globalProperties.$notify = notification;
 
 declare module '@vue/runtime-core' {
@@ -34,7 +37,7 @@ declare module '@vue/runtime-core' {
 		$post: any;
 		$get: any;
 		$qs: any;
-        $notify: any;
+		$notify: any;
 	}
 }
 
@@ -43,6 +46,8 @@ import Icon from '@c/Icon.vue';
 app.component('Icon', Icon);
 
 // ant-design
-import { Button, Select } from "ant-design-vue";
+import { Button, Select, Space } from 'ant-design-vue';
 app.component('AButton', Button);
 app.component('ASelect', Select);
+app.component('ASelectOption', Select.Option);
+app.component('ASpace', Space);

@@ -1,18 +1,17 @@
 <template>
 	<ul class="menu-wrap">
 		<li
-			class="ellipsis"
 			v-for="(item, index) in menu"
 			:key="index"
 			@mouseenter="onMouseEnter"
 			@mouseleave="onMouseLeave"
 		>
-			<Icon name="del" @click="onDel(item)"></Icon>
-			<span>{{ item.name }}</span>
+			<Icon name="close" @click="onDel(item)"></Icon>
+			<span :title="item.name">{{ item.name }}</span>
 			<Icon name="arrow-right" size="12"></Icon>
 
-			<ul v-if="item.children" class="child-menu">
-				<li v-for="(_item, _index) in item.children" :key="index + '-' + _index">
+			<ul v-if="item.children && item.children.length" class="child-menu">
+				<li v-for="(_item, _index) in item.children" :key="index + '-' + _index" @click="$emit('childClick', _item)">
 					{{ _item.name }}
 				</li>
 			</ul>
@@ -68,7 +67,11 @@ export default defineComponent({
 		height: 40px;
 		cursor: pointer;
 		border-radius: 3px;
-		.ellipsis();
+        display: flex;
+        align-items: center;
+        > span {
+            .ellipsis();
+        }
 
 		> span:hover,
 		svg.icon-del:hover {
@@ -107,6 +110,7 @@ export default defineComponent({
 			color: @text-color;
 			padding: 10px;
 			visibility: hidden;
+            z-index: 5;
 			&.active {
 				animation: childFadeIn 0.35s forwards;
 				visibility: visible;

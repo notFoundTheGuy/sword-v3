@@ -1,13 +1,16 @@
 <template>
 	<section>
 		<div class="main-menu">
-			<MenuList :menu="menu" @delete="onDirDel" />
+			<MenuList :menu="menu" @delete="onDirDel" @childClick="onArticleSelect" />
 
 			<AddInput @submit="onDirAdd"></AddInput>
 		</div>
 
 		<div class="main-content">
-			asd
+			<Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon>
+			<p class="title">{{ title }}</p>
+
+			<v-md-preview :text="article"></v-md-preview>
 		</div>
 	</section>
 </template>
@@ -22,30 +25,10 @@ export default defineComponent({
 	components: { MenuList, AddInput },
 	data() {
 		return {
-			menu: [
-				{
-					name: '目录1',
-					id: 1,
-				},
-				{
-					name: '目录2',
-					id: 2,
-					children: [
-						{
-							name: '目录2-1',
-							id: 22,
-						},
-						{
-							name: '目录2-2',
-							id: 23,
-						},
-					],
-				},
-				{
-					name: '目录3',
-					id: 3,
-				},
-			],
+			menu: [],
+			article: '',
+			title: '',
+			articleId: '',
 		};
 	},
 	methods: {
@@ -56,21 +39,42 @@ export default defineComponent({
 					name: value,
 				})
 			).then((res: any) => {
-                this.$notify.success({
-                    message: '通知',
-                    description: '添加成功',
-                    duration: 2
-                });
+				this.$notify.success({
+					message: '通知',
+					description: '添加成功',
+					duration: 2,
+				});
 				this.getDir();
 			});
 		},
 		onDirDel(item: any) {
 			this.$get('/directory/del?id=' + item._id).then((res: any) => {
 				this.$notify.success({
-                    message: '通知',
-                    description: '删除成功',
-                    duration: 2
-                });
+					message: '通知',
+					description: '删除成功',
+					duration: 2,
+				});
+				this.getDir();
+			});
+		},
+		onArticleSelect(item: any) {
+			this.$get('/article/get?id=' + item.id).then((res: any) => {
+				if (res.data) {
+					this.articleId = res.data._id;
+					this.title = res.data.title;
+					this.article = res.data.content;
+					this.$notify.success({
+						message: '通知',
+						description: '更新了，记得加个loading',
+						duration: 2,
+					});
+				}
+			});
+		},
+		onArticleDel() {
+			this.$get('/article/del?id=' + this.articleId).then((res: any) => {
+				this.title = '';
+				this.article = '';
 				this.getDir();
 			});
 		},
@@ -82,6 +86,7 @@ export default defineComponent({
 	},
 	mounted() {
 		this.getDir();
+		this.article = '# hello';
 	},
 });
 </script>
@@ -93,6 +98,25 @@ export default defineComponent({
 		position: absolute;
 		bottom: 0;
 		left: 0;
+	}
+}
+
+.main-content {
+	padding: 10px;
+	position: relative;
+	.title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1.5;
+	}
+
+	.icon-rubbish {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		&:hover {
+			color: @topicColor;
+		}
 	}
 }
 </style>
