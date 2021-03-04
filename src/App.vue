@@ -18,7 +18,8 @@ import TopBar from '@/views/TopBar.vue';
 
 // names
 const FULL_PAGES = [
-    'Writer'
+    'Writer',
+    'Home'
 ];
 export default defineComponent({
 	name: 'App',
@@ -39,6 +40,9 @@ export default defineComponent({
 	height: 100%;
     color: @text-color;
     font-size: @font-m;
+    font-family: "PingFang SC","PingFangSC-Light","Helvetica Neue",Helvetica,"Nimbus Sans L",Arial,"Liberation Sans","Hiragino Sans GB","Source Han Sans CN Normal","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Zen Hei","ST Heiti",SimHei,"WenQuanYi Zen Hei Sharp",sans-serif;
+    background: #10161f;
+    color: #8d9eb9;
 }
 
 .main-layout {
