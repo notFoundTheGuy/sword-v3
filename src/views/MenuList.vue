@@ -6,7 +6,7 @@
 			@mouseenter="onMouseEnter"
 			@mouseleave="onMouseLeave"
 		>
-			<Icon name="close" @click="onDel(item)"></Icon>
+			<!-- <Icon name="close" @click="onDel(item)"></Icon> -->
 			<span :title="item.name">{{ item.name }}</span>
 			<Icon name="arrow-right" size="12"></Icon>
 
@@ -75,7 +75,7 @@ export default defineComponent({
 
 		> span:hover,
 		svg.icon-del:hover {
-			color: @topicColor;
+			color: @color-primary;
 		}
 
 		> svg.icon-del {
@@ -105,9 +105,9 @@ export default defineComponent({
 			top: 0;
 			min-width: 160px;
 			min-height: 300px;
-			background: #fff;
+			background: @color-part-pop;
 			box-shadow: @shadow;
-			color: @text-color;
+			color: @color-text;
 			padding: 10px;
 			visibility: hidden;
             z-index: 5;
@@ -129,7 +129,7 @@ export default defineComponent({
 				line-height: 30px;
 				border-radius: 3px;
 				&:hover {
-					background: @btnLinear;
+					background: @color-primary;
 					color: #fff;
 				}
 			}

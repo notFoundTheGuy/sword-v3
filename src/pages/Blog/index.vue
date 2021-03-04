@@ -1,13 +1,13 @@
 <template>
-	<section>
+	<section class="blog-wrap">
 		<div class="main-menu">
 			<MenuList :menu="menu" @delete="onDirDel" @childClick="onArticleSelect" />
 
-			<AddInput @submit="onDirAdd"></AddInput>
+			<!-- <AddInput @submit="onDirAdd"></AddInput> -->
 		</div>
 
 		<div class="main-content">
-			<Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon>
+			<!-- <Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon> -->
 			<p class="title">{{ title }}</p>
 
 			<v-md-preview :text="article"></v-md-preview>
@@ -92,30 +92,36 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.main-menu {
+.blog-wrap {
 	position: relative;
-	> .add-input {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-	}
-}
+	height: 100%;
+	display: flex;
+    color: @color-text;
+    > div {
+        background: @color-part;
+    }
 
-.main-content {
-	padding: 10px;
-	position: relative;
-	.title {
-		font-size: 2.5rem;
-		font-weight: 700;
-		line-height: 1.5;
+	.main-menu {
+        margin-right: 20px;
 	}
 
-	.icon-rubbish {
-		position: absolute;
-		right: 10px;
-		top: 10px;
-		&:hover {
-			color: @topicColor;
+	.main-content {
+		position: relative;
+		padding: 10px;
+        flex: 1;
+		.title {
+			font-size: 2.5rem;
+			font-weight: 700;
+			line-height: 1.5;
+		}
+
+		.icon-rubbish {
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			&:hover {
+				color: @topicColor;
+			}
 		}
 	}
 }

@@ -16,7 +16,7 @@ let pointLight, pointLight2;
 
 function init() {
     let domEl = document.querySelector('#ballbox3D');
-	camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+	camera = new THREE.PerspectiveCamera(60, 0.98, 2, 1000);
 	camera.position.set(45, 10, 45);
 
 	scene = new THREE.Scene();
@@ -176,7 +176,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 #ballbox3D {
-    width: 500px;
-    height: 500px;
+    width: 650px;
+    height: 650px;
 }
 </style>
