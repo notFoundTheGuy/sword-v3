@@ -7,10 +7,12 @@
 		</div>
 
 		<div class="main-content">
-			<!-- <Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon> -->
-			<p class="title">{{ title }}</p>
+			<div :class="{ animate__fadeOut: loading, animate__fadeIn: !loading }" class="animate__animated">
+				<!-- <Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon> -->
+				<p class="title">{{ title }}</p>
 
-			<v-md-preview :text="article"></v-md-preview>
+				<v-md-preview :text="article"></v-md-preview>
+			</div>
 		</div>
 	</section>
 </template>
@@ -29,6 +31,7 @@ export default defineComponent({
 			article: '',
 			title: '',
 			articleId: '',
+			loading: false,
 		};
 	},
 	methods: {
@@ -58,16 +61,13 @@ export default defineComponent({
 			});
 		},
 		onArticleSelect(item: any) {
+			this.loading = true;
 			this.$get('/article/get?id=' + item.id).then((res: any) => {
+				this.loading = false;
 				if (res.data) {
 					this.articleId = res.data._id;
 					this.title = res.data.title;
 					this.article = res.data.content;
-					this.$notify.success({
-						message: '通知',
-						description: '更新了，记得加个loading',
-						duration: 2,
-					});
 				}
 			});
 		},
@@ -96,19 +96,28 @@ export default defineComponent({
 	position: relative;
 	height: 100%;
 	display: flex;
-    color: @color-text;
-    > div {
-        background: @color-part;
-    }
+	color: @color-text;
+	> div {
+		background: @color-part;
+	}
 
 	.main-menu {
-        margin-right: 20px;
+		margin-right: 20px;
+		height: 100%;
 	}
 
 	.main-content {
 		position: relative;
 		padding: 10px;
-        flex: 1;
+		flex: 1;
+		height: 100%;
+		overflow: hidden;
+        padding-right: 10px + @scrollbar-width;
+        &:hover {
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
 		.title {
 			font-size: 2.5rem;
 			font-weight: 700;

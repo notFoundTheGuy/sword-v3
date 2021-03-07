@@ -51,7 +51,7 @@ export default defineComponent({
 	font-family: 'PingFang SC', 'PingFangSC-Light', 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial,
 		'Liberation Sans', 'Hiragino Sans GB', 'Source Han Sans CN Normal', 'Microsoft YaHei', 'Wenquanyi Micro Hei',
 		'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
-	background: #10161f;
+	background: @color-bg;
 }
 
 .app-wrap {
@@ -76,7 +76,7 @@ export default defineComponent({
     .pages-wrap {
         margin-left: 210px;
         height: 95vh;
-        border: 1px solid red;
+        // border: 1px solid red;
         position: relative;
     }
 }

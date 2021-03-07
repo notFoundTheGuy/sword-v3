@@ -3,12 +3,15 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+require('./common/style/lib/animate.css');
+
 // v-md-editor
 import VueMarkdownEditor from '@kangc/v-md-editor';
 import VMdPreview from '@kangc/v-md-editor/lib/preview';
 import '@kangc/v-md-editor/lib/style/base-editor.css';
 import vuepressTheme from '@kangc/v-md-editor/lib/theme/vuepress.js';
 import '@kangc/v-md-editor/lib/theme/style/vuepress.css';
+import './common/style/markdown.less';
 VueMarkdownEditor.use(vuepressTheme);
 VMdPreview.use(vuepressTheme);
 
@@ -24,7 +27,7 @@ require('./common/style/index.less');
 
 // 全局配置
 app.config.performance = true;
-import axios from './axios';
+import axios from './common/axios';
 import qs from 'qs';
 app.config.globalProperties.$post = axios.post;
 app.config.globalProperties.$get = axios.get;

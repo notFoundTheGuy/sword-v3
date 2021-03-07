@@ -1,18 +1,18 @@
 <template>
 	<div class="home">
         home
-        <!-- <BallBox class="ball-box"/> -->
+        <BallBox class="ball-box"/>
 	</div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-// import BallBox from '@v/3D/ballbox';
+import BallBox from '@v/3D/ballbox';
 
 export default defineComponent({
 	name: 'Home',
 	components: {
-        // BallBox
+        BallBox
 	},
 });
 </script>
