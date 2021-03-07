@@ -12,9 +12,9 @@
 	</template> -->
 	<div :class="{ 'is-home': isHome }" class="app-wrap">
 		<Nav />
-        <div class="pages-wrap">
-            <router-view />
-        </div>
+		<div class="pages-wrap">
+			<router-view />
+		</div>
 	</div>
 </template>
 
@@ -55,14 +55,14 @@ export default defineComponent({
 }
 
 .app-wrap {
-    color: #8d9eb9;
+	color: #8d9eb9;
 	.nav {
 		position: fixed;
 		top: 0;
 		left: 50px;
-        z-index: 5;
+		z-index: 5;
 		transition: all 0.35s ease;
-        transform: scale(0.8);
+		transform: scale(0.8);
 	}
 	&.is-home {
 		.nav {
@@ -72,12 +72,38 @@ export default defineComponent({
 		}
 	}
 
-    padding: 2.5vh 120px 0 0;
-    .pages-wrap {
-        margin-left: 210px;
-        height: 95vh;
-        // border: 1px solid red;
-        position: relative;
-    }
+	padding: 2.5vh 120px 0 0;
+	.pages-wrap {
+		margin-left: 210px;
+		height: 95vh;
+		// border: 1px solid red;
+		position: relative;
+		color: @color-text;
+
+		> section {
+			position: relative;
+			height: 100%;
+			display: flex;
+			z-index: 10;
+
+			.main-menu {
+				margin-right: 20px;
+				height: 100%;
+			}
+
+			.main-content {
+				position: relative;
+				padding: 10px;
+				flex: 1;
+				height: 100%;
+				overflow: hidden;
+				padding-right: 10px + @scrollbar-width;
+				&:hover {
+					overflow-y: auto;
+					padding-right: 10px;
+				}
+			}
+		}
+	}
 }
 </style>
