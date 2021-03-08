@@ -54,6 +54,7 @@ export default defineComponent({
 	overflow: hidden;
     animation: fadeIn 1s linear forwards;
 }
+
 @keyframes rotate {
 	0% {
 		transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(0);

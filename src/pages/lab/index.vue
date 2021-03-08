@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import MenuList from '@v/MenuList.vue';
-import LabList from './LabList.js'
+import LabList from './LabList'
 import StarSky from './css/StarSky.vue'
 
 export default defineComponent({
