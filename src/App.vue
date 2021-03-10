@@ -40,7 +40,7 @@ export default defineComponent({
 <style lang="less">
 #app {
 	height: 100%;
-	color: @text-color;
+	color: @color-text;
 	font-size: @font-m;
 	font-family: 'PingFang SC', 'PingFangSC-Light', 'Helvetica Neue', Helvetica, 'Nimbus Sans L', Arial,
 		'Liberation Sans', 'Hiragino Sans GB', 'Source Han Sans CN Normal', 'Microsoft YaHei', 'Wenquanyi Micro Hei',

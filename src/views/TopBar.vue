@@ -18,7 +18,7 @@
 		</div>
 
 		<div>
-			用户
+			user
 		</div>
 	</header>
 </template>
@@ -61,7 +61,7 @@ export default defineComponent({
 				},
 				{
 					name: '组件库',
-					link: '/components',
+					link: 'http://li.usts.top',
 					icon: 'catalog',
 				},
 				{
@@ -75,7 +75,12 @@ export default defineComponent({
 	methods: {
 		onTabClick(item: any) {
 			if (!item.link || item.link == this.$route.path) return;
-			this.$router.push(item.link);
+            if (item.link.indexOf('http') > -1) {
+                window.open(item.link);
+            } else {
+                this.$router.push(item.link);
+            }
+			
 		},
 	},
 });
