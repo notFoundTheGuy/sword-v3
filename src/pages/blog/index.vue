@@ -1,30 +1,43 @@
 <template>
-	<section class="blog-wrap">
-		<div class="main-menu">
-			<MenuList :menu="menu" @delete="onDirDel" @childClick="onArticleSelect" />
+	<div class="main-menu">
+		<a-menu
+			mode="inline"
+			style="width: 100%"
+			@select="onSelect"
+		>
+			<a-sub-menu v-for="(item, index) in menu" :key="item._id">
+				<template #title>
+					{{ item.name }}
+				</template>
 
-			<!-- <AddInput @submit="onDirAdd"></AddInput> -->
+				<a-menu-item v-for="(subItem, subIndex) in item.children" :key="subItem.id">
+					{{ subItem.name }}
+				</a-menu-item>
+			</a-sub-menu>
+		</a-menu>
+
+		<!-- <MenuList :menu="menu" @delete="onDirDel" @childClick="onArticleSelect" /> -->
+
+		<!-- <AddInput @submit="onDirAdd"></AddInput> -->
+	</div>
+
+	<div class="main-content">
+		<div :class="{ animate__fadeOut: loading, animate__fadeIn: !loading }" class="animate__animated">
+			<!-- <Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon> -->
+			<p class="title">{{ title }}</p>
+
+			<v-md-preview :text="article"></v-md-preview>
 		</div>
-
-		<div class="main-content">
-			<div :class="{ animate__fadeOut: loading, animate__fadeIn: !loading }" class="animate__animated">
-				<!-- <Icon name="rubbish" @click="onArticleDel" size="18" style="cursor: pointer"></Icon> -->
-				<p class="title">{{ title }}</p>
-
-				<v-md-preview :text="article"></v-md-preview>
-			</div>
-		</div>
-	</section>
+	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import MenuList from '@v/MenuList.vue';
+import { defineComponent, reactive, toRefs } from 'vue';
 import AddInput from '@c/AddInput.vue';
 
 export default defineComponent({
 	name: 'Blog',
-	components: { MenuList, AddInput },
+	components: { AddInput },
 	data() {
 		return {
 			menu: [],
@@ -35,6 +48,9 @@ export default defineComponent({
 		};
 	},
 	methods: {
+        onSelect(item: any) {
+            this.getArticleById(item.key);
+        },
 		onDirAdd(value: any) {
 			this.$post(
 				'/directory/add',
@@ -60,9 +76,8 @@ export default defineComponent({
 				this.getDir();
 			});
 		},
-		onArticleSelect(item: any) {
-			this.loading = true;
-			this.$get('/article/get?id=' + item.id).then((res: any) => {
+        getArticleById(id: string) {
+            this.$get('/article/get?id=' + id).then((res: any) => {
 				this.loading = false;
 				if (res.data) {
 					this.articleId = res.data._id;
@@ -70,7 +85,18 @@ export default defineComponent({
 					this.article = res.data.content;
 				}
 			});
-		},
+        },
+		// onArticleSelect(item: any) {
+		// 	this.loading = true;
+		// 	this.$get('/article/get?id=' + item.id).then((res: any) => {
+		// 		this.loading = false;
+		// 		if (res.data) {
+		// 			this.articleId = res.data._id;
+		// 			this.title = res.data.title;
+		// 			this.article = res.data.content;
+		// 		}
+		// 	});
+		// },
 		onArticleDel() {
 			this.$get('/article/del?id=' + this.articleId).then((res: any) => {
 				this.title = '';
@@ -92,29 +118,19 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.blog-wrap {
-	> div {
-		background: @color-part;
-	}
+.title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1.5;
+    color: @color-text;
+}
 
-	.main-menu {
-		margin-right: 20px;
-		height: 100%;
-	}
-
-	.title {
-		font-size: 2.5rem;
-		font-weight: 700;
-		line-height: 1.5;
-	}
-
-	.icon-rubbish {
-		position: absolute;
-		right: 10px;
-		top: 10px;
-		&:hover {
-			color: @topicColor;
-		}
+.icon-rubbish {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	&:hover {
+		color: @topicColor;
 	}
 }
 </style>

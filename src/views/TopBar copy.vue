@@ -1,8 +1,9 @@
 <template>
 	<header>
 		<div>
-			<div class="logo-wrap" @click="$router.push('/')">
-				<img src="@/assets/imgs/logo.png" alt="π" />
+			<div class="logo-wrap" @click="$router.push('/home')">
+				<!-- <img v-if="theme == 'glass'" src="@/assets/logo-fill.png" alt="π" />
+				<img v-else src="@/assets/logo-white.png" alt="π" /> -->
 			</div>
 			<ul>
 				<li
@@ -11,14 +12,19 @@
 					@click="onTabClick(item)"
 					:key="index"
 				>
-					<Icon :name="item.icon" />
 					{{ item.name }}
 				</li>
 			</ul>
-		</div>
 
-		<div>
-			用户
+            <div>
+                <div class="search-box" v-show="showSearch" v-if="isComponents">
+                    <input type="text" placeholder="请输入组件名称" maxlength="20" />
+                </div>
+
+                <div v-if="isBlog">
+                    <button class="ghost large" @click="$router.push('/writer')">写文章</button>
+                </div>
+            </div>
 		</div>
 	</header>
 </template>
@@ -50,25 +56,17 @@ export default defineComponent({
 		return {
 			navList: [
 				{
-					name: '博客',
+					name: '首页',
+					link: '/home',
+				},
+				{
+					name: 'blog',
 					link: '/blog',
-					icon: 'book',
 				},
-				{
-					name: '实验室',
-					link: '/lab',
-					icon: 'box',
-				},
-				{
-					name: '组件库',
-					link: '/components',
-					icon: 'catalog',
-				},
-				{
-					name: '关于',
-					link: '/about',
-					icon: 'share',
-				},
+				// {
+				//     name: "About",
+				//     link: "/main"
+				// }
 			],
 		};
 	},
@@ -83,43 +81,44 @@ export default defineComponent({
 
 <style scoped lang="less">
 header {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	height: @header-height;
+	height: @headerHeight;
 	width: 100%;
+	color: #fff;
+	background: @topicColor;
+	background-image: @btnLinear;
+	font-size: 1.25rem;
+	position: relative;
 	z-index: 5;
-    border-bottom: 1px solid @color-border;
-
 	> div {
+		margin: auto;
+		width: @mainWidth;
+		min-width: @minMainWidth;
 		display: flex;
-		height: 100%;
+		align-items: center;
 		.logo-wrap {
-			.flex-center();
-			width: @side-menu-width;
+			width: @menuWidth;
+			padding: 0 @padding-m;
+			margin-right: @padding-m;
+			font-size: 0;
 			cursor: pointer;
-			> img {
-				width: 140px;
+			img {
+				width: 65%;
 			}
 		}
 		ul {
+			flex: 1;
 			display: flex;
 			li {
-				.flex-center();
-				margin: 0 40px;
-				width: 120px;
-				height: 100%;
-				border-bottom: 2px solid transparent;
-				color: @color-menu;
+				margin: 0 40px 0 @padding-l;
+				height: @headerHeight;
+				line-height: @headerHeight;
 				cursor: pointer;
+				color: #eeeeee;
+				user-select: none;
+				border-bottom: 4px solid transparent;
 				&.active {
-					border-bottom-color: @color-primary;
-					color: @color-menu-active;
-				}
-
-				.sword-icon {
-					margin-right: 14px;
+					border-bottom-color: #fff;
+					color: #fff;
 				}
 			}
 		}

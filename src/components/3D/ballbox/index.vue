@@ -1,5 +1,5 @@
 <template>
-    <div id="ballbox3D">
+    <div id="ballbox3D" class="ballbox">
 
     </div>
 </template>
@@ -21,7 +21,7 @@ function init() {
 
 	scene = new THREE.Scene();
     // 盒子周围颜色
-	scene.add(new THREE.AmbientLight(0x10161f));
+	scene.add(new THREE.AmbientLight(0x1f2128));
 
 	// lights
 	function createLight(color) {
@@ -90,15 +90,14 @@ function init() {
 	mesh.receiveShadow = true;
 	scene.add(mesh);
 
-	//
-
-	renderer = new THREE.WebGLRenderer({ antialias: true });
+    // alpha 设置透明
+	renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 	renderer.setPixelRatio(window.devicePixelRatio);
 	renderer.setSize(domEl.getBoundingClientRect().width, domEl.getBoundingClientRect().height);
 	renderer.shadowMap.enabled = true;
 	renderer.shadowMap.type = THREE.BasicShadowMap;
     // 背景色
-    renderer.setClearColor(0x10161f, 1);
+    // renderer.setClearColor(0x1f2128, 1);
 	domEl.appendChild(renderer.domElement);
 
 	const controls = new OrbitControls(camera, renderer.domElement);
@@ -175,8 +174,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-#ballbox3D {
-    width: 650px;
-    height: 650px;
+.ballbox {
+    width: 100%;
+    height: 100%;
 }
 </style>

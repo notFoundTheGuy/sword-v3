@@ -14,8 +14,10 @@ export default defineComponent({
 	setup() {
 		let starsRef = ref(null);
 
-		let count = 900;
-		let distance = 800;
+		let count = 500;
+		let distance = 1000;
+        // let count = 900;
+		// let distance = 800;
 
 		onMounted(() => {
 			// @ts-ignore
@@ -48,7 +50,7 @@ export default defineComponent({
 	right: 0;
 	bottom: 0;
 	z-index: 0;
-	background: radial-gradient(200% 105% at top center, #1b2947 10%, #232e50 40%, #614e7b 70%);
+	// background: radial-gradient(200% 105% at top center, #1b2947 10%, #232e50 40%, #614e7b 70%);
 	// background: radial-gradient(200% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
 	background-attachment: fixed;
 	overflow: hidden;
@@ -85,7 +87,8 @@ export default defineComponent({
 	.star {
 		width: 2px;
 		height: 2px;
-		background: #f7f7b6;
+		// background: #f7f7b6;
+		background: #fff;
 		position: absolute;
 		left: 0;
 		top: 0;

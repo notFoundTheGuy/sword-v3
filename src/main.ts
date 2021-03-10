@@ -49,8 +49,11 @@ import Icon from '@c/Icon.vue';
 app.component('Icon', Icon);
 
 // ant-design
-import { Button, Select, Space } from 'ant-design-vue';
+import { Button, Select, Space, Menu } from 'ant-design-vue';
 app.component('AButton', Button);
 app.component('ASelect', Select);
 app.component('ASelectOption', Select.Option);
 app.component('ASpace', Space);
+app.component('AMenu', Menu);
+app.component('ASubMenu', Menu.SubMenu);
+app.component('AMenuItem', Menu.Item);

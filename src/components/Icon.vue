@@ -1,5 +1,5 @@
 <template>
-	<svg class="lj-icon" :class="[klass, iconName]" :style="_style">
+	<svg class="sword-icon" :class="[klass, iconName]" :style="_style">
 		<use :xlink:href="'#' + iconName"></use>
 	</svg>
 </template>
@@ -20,7 +20,7 @@ export default defineComponent({
 		},
 		size: {
 			type: [String, Number],
-			default: 14,
+			default: 24,
 		},
 		customStyle: {
 			type: Object,
@@ -51,7 +51,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 // 防止外层使用svg symbol时覆盖
-svg.lj-icon {
+svg.sword-icon {
 	width: 1em;
 	height: 1em;
 	vertical-align: -0.15em;

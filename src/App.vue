@@ -1,27 +1,29 @@
 <template>
-	<!-- <template v-if="isFullPage">
-        <router-view />
+	<template v-if="isFullPage">
+        <keep-alive>
+            <router-view />
+        </keep-alive>
     </template>
 	<template v-else>
-		<header>
-			<TopBar />
-		</header>
-		<div class="main-layout">
-			<router-view />
-		</div>
-	</template> -->
-	<div :class="{ 'is-home': isHome }" class="app-wrap">
+        <div class="main-layout">
+            <TopBar />
+            <section>
+                <router-view />
+            </section>
+        </div>
+	</template>
+	<!-- <div :class="{ 'is-home': isHome }" class="app-wrap">
 		<Nav />
 		<div class="pages-wrap">
 			<router-view />
 		</div>
-	</div>
+	</div> -->
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TopBar from '@/views/TopBar.vue';
-import Nav from '@v/Nav.vue';
+// import Nav from '@v/Nav.vue';
 
 // names
 const FULL_PAGES = ['Writer', 'Home'];
@@ -29,7 +31,7 @@ export default defineComponent({
 	name: 'App',
 	components: {
 		TopBar,
-		Nav,
+		// Nav,
 	},
 	computed: {
 		isFullPage() {
@@ -54,56 +56,29 @@ export default defineComponent({
 	background: @color-bg;
 }
 
-.app-wrap {
-	color: #8d9eb9;
-	.nav {
-		position: fixed;
-		top: 0;
-		left: 50px;
-		z-index: 5;
-		transition: all 0.35s ease;
-		transform: scale(0.8);
-	}
-	&.is-home {
-		.nav {
-			top: 45%;
-			left: 15%;
-			transform: translateY(-50%);
-		}
-	}
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    > section {
+        flex: 1;
+        display: flex;
+        height: 100%;
+        overflow: hidden;
 
-	padding: 2.5vh 120px 0 0;
-	.pages-wrap {
-		margin-left: 210px;
-		height: 95vh;
-		// border: 1px solid red;
-		position: relative;
-		color: @color-text;
+        > .main-menu {
+            width: @side-menu-width;
+            border-right: 1px solid @color-border;
+        }
 
-		> section {
-			position: relative;
-			height: 100%;
-			display: flex;
-			z-index: 10;
-
-			.main-menu {
-				margin-right: 20px;
-				height: 100%;
-			}
-
-			.main-content {
-				position: relative;
-				padding: 10px;
-				flex: 1;
-				height: 100%;
-				overflow: hidden;
-				padding-right: 10px + @scrollbar-width;
-				&:hover {
-					overflow-y: auto;
-					padding-right: 10px;
-				}
-			}
-		}
-	}
+        > .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: hidden;
+            &:hover {
+                overflow-y: auto;
+            }
+        }
+    }
 }
 </style>
