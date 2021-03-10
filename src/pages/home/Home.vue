@@ -25,7 +25,10 @@
 				</div>
 				<div :class="{ invisible: curNav !== 'home' }">
 					<p>试试惯性过弯</p>
-					<BallBox class="ball-box" />
+                    <div class="ball-wrap">
+                        <RotateBall />
+                    </div>
+					<!-- <BallBox class="ball-box" /> -->
 				</div>
 			</div>
 		</section>
@@ -34,8 +37,9 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
-import BallBox from '@c/3D/ballbox';
+// import BallBox from '@c/3D/ballbox';
 import Nav from './Nav.vue';
+import RotateBall from '../lab/css/RotateBall';
 import StarSky from '../lab/css/StarSky';
 
 export default defineComponent({
@@ -53,7 +57,8 @@ export default defineComponent({
 		};
 	},
 	components: {
-		BallBox,
+		// BallBox,
+        RotateBall,
 		Nav,
 		StarSky,
 	},
@@ -112,6 +117,11 @@ export default defineComponent({
 				> img {
 					width: @img-width;
 				}
+                .ball-wrap {
+                    position: absolute;
+                    top: 180px;
+                    left: 80px;
+                }
 				.ball-box {
 					width: 550px;
 					height: 550px;
