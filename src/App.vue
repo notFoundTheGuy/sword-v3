@@ -1,29 +1,22 @@
 <template>
 	<template v-if="isFullPage">
-        <keep-alive>
-            <router-view />
-        </keep-alive>
-    </template>
-	<template v-else>
-        <div class="main-layout">
-            <TopBar />
-            <section>
-                <router-view />
-            </section>
-        </div>
-	</template>
-	<!-- <div :class="{ 'is-home': isHome }" class="app-wrap">
-		<Nav />
-		<div class="pages-wrap">
+		<keep-alive>
 			<router-view />
+		</keep-alive>
+	</template>
+	<template v-else>
+		<div class="main-layout">
+			<TopBar />
+			<section>
+				<router-view />
+			</section>
 		</div>
-	</div> -->
+	</template>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TopBar from '@/views/TopBar.vue';
-// import Nav from '@v/Nav.vue';
 
 // names
 const FULL_PAGES = ['Writer', 'Home'];
@@ -31,7 +24,6 @@ export default defineComponent({
 	name: 'App',
 	components: {
 		TopBar,
-		// Nav,
 	},
 	computed: {
 		isFullPage() {
@@ -57,28 +49,30 @@ export default defineComponent({
 }
 
 .main-layout {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    > section {
-        flex: 1;
-        display: flex;
-        height: 100%;
-        overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	> section {
+		flex: 1;
+		display: flex;
+		height: 100%;
+		overflow: hidden;
 
-        > .main-menu {
-            width: @side-menu-width;
-            border-right: 1px solid @color-border;
-        }
+		> .main-menu {
+			width: @side-menu-width;
+			border-right: 1px solid @color-border;
+		}
 
-        > .main-content {
-            flex: 1;
-            padding: 40px;
-            overflow-y: hidden;
-            &:hover {
-                overflow-y: auto;
-            }
-        }
-    }
+		> .main-content {
+			flex: 1;
+			padding: 40px;
+			overflow-y: hidden;
+			padding-right: 40px + @scrollbar-width;
+			&:hover {
+				padding-right: 40px;
+				overflow-y: auto;
+			}
+		}
+	}
 }
 </style>
