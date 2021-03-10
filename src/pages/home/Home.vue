@@ -7,28 +7,28 @@
 			<div class="card-wrap">
 				<p>Hei Buddy,</p>
 				<p>Welcome back 👋</p>
+				<div :class="{ invisible: curNav !== 'home' }">
+					<p>试试惯性过弯</p>
+					<div class="ball-wrap">
+						<RotateBall />
+					</div>
+					<!-- <BallBox class="ball-box" /> -->
+				</div>
 				<div :class="{ invisible: curNav !== 'blog' }">
 					<p>平时写写</p>
-					<img src="@/assets/imgs/colorful-ball.png" />
+					<img src="@/assets/imgs/colorful-ball.png" ondragstart="return false;"/>
 				</div>
 				<div :class="{ invisible: curNav !== 'lab' }">
 					<p>随便试试</p>
-					<img src="@/assets/imgs/triangle.png" />
+					<img src="@/assets/imgs/triangle.png" ondragstart="return false;"/>
 				</div>
 				<div :class="{ invisible: curNav !== 'components' }">
 					<p>将就用用</p>
-					<img src="@/assets/imgs/orange-ball.png" />
+					<img src="@/assets/imgs/orange-ball.png" ondragstart="return false;"/>
 				</div>
 				<div :class="{ invisible: curNav !== 'about' }">
 					<p>介绍一下</p>
-					<img src="@/assets/imgs/wind.png" />
-				</div>
-				<div :class="{ invisible: curNav !== 'home' }">
-					<p>试试惯性过弯</p>
-                    <div class="ball-wrap">
-                        <RotateBall />
-                    </div>
-					<!-- <BallBox class="ball-box" /> -->
+					<img src="@/assets/imgs/wind.png" ondragstart="return false;"/>
 				</div>
 			</div>
 		</section>
@@ -58,7 +58,7 @@ export default defineComponent({
 	},
 	components: {
 		// BallBox,
-        RotateBall,
+		RotateBall,
 		Nav,
 		StarSky,
 	},
@@ -68,6 +68,7 @@ export default defineComponent({
 <style lang="less" scoped>
 .home-wrap {
 	background: @color-bg;
+	user-select: none;
 	> section {
 		position: fixed;
 		top: 50%;
@@ -117,11 +118,11 @@ export default defineComponent({
 				> img {
 					width: @img-width;
 				}
-                .ball-wrap {
-                    position: absolute;
-                    top: 180px;
-                    left: 80px;
-                }
+				.ball-wrap {
+					position: absolute;
+					top: 180px;
+					left: 80px;
+				}
 				.ball-box {
 					width: 550px;
 					height: 550px;

@@ -72,6 +72,20 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
+// @color-1: #ff61c2;
+// @color-2: #5e9cfd;
+// @color-3: #57f4f9;
+// @color-4: #5e9cfd;
+// @color-5: #5e9cfd;
+// @color-border: #ff61c2;
+
+@color-1: #fcbe2e;
+@color-2: #44c3c7;
+@color-3: #307d80;
+@color-4: #4977c2;
+@color-5: #3f68a8;
+@color-border: #83692b;
+
 .rotate-ball {
 	width: 10em;
 	height: 10em;
@@ -100,7 +114,7 @@ export default defineComponent({
 			position: absolute;
 			border-radius: 50%;
 			box-sizing: border-box;
-			border: 1px dotted #ffd50059;
+			border: 1px dotted @color-border;
 			transform-style: preserve-3d;
 			perspective: 400em;
 			&::before,
@@ -118,13 +132,13 @@ export default defineComponent({
 			&::before {
 				width: 2.5em;
 				height: 2.5em;
-				color: gold;
+				color: @color-2;
 				box-shadow: inset 0 0 2em, 0 0 2em;
 			}
 			&::after {
 				width: 1.5em;
 				height: 1.5em;
-				color: teal;
+				color: @color-1;
 				box-shadow: inset 0 0 1em, 0 0 1em;
 				transform: translateZ(-2em);
 			}
@@ -156,7 +170,7 @@ export default defineComponent({
 				bottom: 0;
 				margin: auto;
 				border-radius: inherit;
-				color: orangered;
+				color: @color-3;
 				box-shadow: inset 0 0 2em;
 				transform: translateZ(2em);
 				transform-style: preserve-3d;
@@ -177,13 +191,13 @@ export default defineComponent({
 				&::before {
 					width: 2.5em;
 					height: 2.5em;
-					color: crimson;
+					color: @color-4;
 					transform: translateZ(2em);
 				}
 				&::after {
 					width: 1.5em;
 					height: 1.5em;
-					color: purple;
+					color: @color-5;
 					transform: translateZ(4em);
 				}
 			}
