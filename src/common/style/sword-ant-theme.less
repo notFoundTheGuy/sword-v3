@@ -6,7 +6,22 @@
 	background: none;
 	border: none;
 	color: @color-menu;
-	.ant-menu-item-selected,
+    font-weight: bold;
+
+	.ant-menu-item {
+		&:hover,
+		&.ant-menu-item-selected {
+			color: #fff;
+            background: none;
+		}
+		&:active {
+			background: none;
+		}
+		&::after {
+			border-color: #fff;
+		}
+	}
+
 	.ant-menu-submenu-selected {
 		background: none;
 		color: #fff;
@@ -15,11 +30,6 @@
 		color: #fff;
 	}
 
-	.ant-menu-item::after {
-		border-color: #fff;
-	}
-
-	.ant-menu-item,
 	.ant-menu-submenu-title {
 		&:active {
 			background: none;

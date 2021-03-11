@@ -1,7 +1,7 @@
 <template>
 	<div class="main-menu">
-		<a-menu mode="inline" style="width: 100%" @select="onMenuSelect">
-			<a-sub-menu v-for="(item, index) in menu" :key="item._id">
+		<a-menu mode="inline" style="width: 100%" @select="onMenuSelect" :openKeys="openKeys">
+			<a-sub-menu v-for="(item, index) in menu" :key="item._id" @titleClick="onSubMenuClick(item)">
 				<template #title>
 					{{ item.name }}
 				</template>
@@ -26,34 +26,53 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue';
+import { defineComponent, ref, onMounted, reactive, toRef, toRefs } from 'vue';
 import useArticle from './useArticle';
 import { fetchDir } from './api/directory';
 
 export default defineComponent({
 	name: 'Blog',
 	setup(props, context) {
-		let menu = ref([]);
-		let curArticleId = ref('');
+		const state = reactive({
+			openKeys: [''],
+			curArticleId: '',
+			menu: [],
+		});
 
-		const { title, article, loading } = useArticle(curArticleId);
+		const { title, article, loading } = useArticle(toRef(state, 'curArticleId'));
 
 		const onMenuSelect = (item: any) => {
-			curArticleId.value = item.key;
+			state.curArticleId = item.key;
 		};
 
+		const onSubMenuClick = (item: any) => {
+			state.openKeys = [item._id];
+		};
+
+        // 鼠标hover方式打开
+		// const onSubMenuEnter = (item: any) => {
+		// 	state.openKeys = [item._id];
+		// };
+
+		// const onSubMenuLeave = () => {
+		// 	state.openKeys = [];
+		// };
+
 		const getDir = async () => {
-			menu.value = await fetchDir();
+			state.menu = await fetchDir();
 		};
 
 		onMounted(getDir);
 
 		return {
-			menu,
+			...toRefs(state),
 			title,
 			article,
 			onMenuSelect,
-            loading
+			onSubMenuClick,
+			// onSubMenuEnter,
+			// onSubMenuLeave,
+			loading,
 		};
 	},
 });
@@ -64,6 +83,6 @@ export default defineComponent({
 	font-size: 2.5rem;
 	font-weight: 700;
 	line-height: 1.5;
-    color: @color-text;
+	color: @color-text;
 }
 </style>

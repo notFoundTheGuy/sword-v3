@@ -36,6 +36,16 @@ export default defineComponent({
 	},
 	methods: {
 		onSave() {
+            if (!this.directory) {
+                alert('目录目录！！！！！')
+                return;
+            }
+
+            if (!this.title) {
+                alert('标题标题！！！！！')
+                return;
+            }
+
 			this.toSubmit();
 		},
 		getDir() {
@@ -72,6 +82,7 @@ export default defineComponent({
 <style lang="less" scoped>
 .md-wrap {
 	position: relative;
+    color: #333;
 	.header {
 		position: relative;
 		z-index: 2;
