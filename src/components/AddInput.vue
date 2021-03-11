@@ -29,5 +29,12 @@ export default defineComponent({
 .add-input {
 	display: flex;
 	width: 100%;
+
+    input {
+        background: none;
+        border: 1px solid #fff;
+        outline: none;
+    }
+
 }
 </style>

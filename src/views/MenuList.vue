@@ -1,17 +1,19 @@
 <template>
 	<ul class="menu-wrap">
-		<li
-			v-for="(item, index) in menu"
-			:key="index"
-			@mouseenter="onMouseEnter"
-			@mouseleave="onMouseLeave"
-		>
-			<!-- <Icon name="close" @click="onDel(item)"></Icon> -->
+		<li v-for="(item, index) in menu" :key="index" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave">
+			<a-popconfirm title="Are you sure delete this task?" ok-text="Yes" cancel-text="No" @confirm="onDel(item)">
+				<Icon name="close"></Icon>
+			</a-popconfirm>
+
 			<span :title="item.name">{{ item.name }}</span>
 			<Icon name="arrow-right" size="12"></Icon>
 
 			<ul v-if="item.children && item.children.length" class="child-menu">
-				<li v-for="(_item, _index) in item.children" :key="index + '-' + _index" @click="$emit('childClick', _item)">
+				<li
+					v-for="(_item, _index) in item.children"
+					:key="index + '-' + _index"
+					@click="$emit('childClick', _item)"
+				>
 					{{ _item.name }}
 				</li>
 			</ul>
@@ -49,6 +51,7 @@ export default defineComponent({
 		},
 		onDel(item: any) {
 			console.log(item);
+
 			this.$emit('delete', item);
 		},
 	},
@@ -67,11 +70,11 @@ export default defineComponent({
 		height: 40px;
 		cursor: pointer;
 		border-radius: 3px;
-        display: flex;
-        align-items: center;
-        > span {
-            .ellipsis();
-        }
+		display: flex;
+		align-items: center;
+		> span {
+			.ellipsis();
+		}
 
 		> span:hover,
 		svg.icon-del:hover {
@@ -110,7 +113,7 @@ export default defineComponent({
 			color: @color-text;
 			padding: 10px;
 			visibility: hidden;
-            z-index: 5;
+			z-index: 5;
 			&.active {
 				animation: childFadeIn 0.35s forwards;
 				visibility: visible;

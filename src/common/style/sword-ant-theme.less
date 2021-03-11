@@ -1,13 +1,22 @@
 @import '~ant-design-vue/dist/antd.less'; // 引入官方提供的 less 样式入口文件
 
-@primary-color: #fff;
+@primary-color: @color-primary;
 
 #app .ant-menu {
 	background: none;
 	border: none;
 	color: @color-menu;
-	.ant-menu-item-selected {
+	.ant-menu-item-selected,
+	.ant-menu-submenu-selected {
 		background: none;
+		color: #fff;
+	}
+	.ant-menu-submenu-title:hover {
+		color: #fff;
+	}
+
+	.ant-menu-item::after {
+		border-color: #fff;
 	}
 
 	.ant-menu-item,

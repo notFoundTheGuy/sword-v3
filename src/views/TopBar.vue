@@ -18,7 +18,7 @@
 		</div>
 
 		<div>
-			user
+			<!-- user -->
 		</div>
 	</header>
 </template>

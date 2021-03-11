@@ -1,8 +1,8 @@
 <template>
 	<div class="home-nav">
 		<div class="logo">
-            <img src="@/assets/imgs/logo.png" alt="logo" width="175">
-        </div>
+			<img src="@/assets/imgs/logo.png" alt="logo" width="175" />
+		</div>
 		<ul>
 			<li @mouseover="$emit('hover', 'blog')" @mouseout="onMouseOut" @click="$router.push('/blog')">
 				<Icon name="book" />
@@ -12,7 +12,7 @@
 				<Icon name="box" />
 				实验室
 			</li>
-			<li @mouseover="$emit('hover', 'components')" @mouseout="onMouseOut" @click="$router.push('/components')">
+			<li @mouseover="$emit('hover', 'components')" @mouseout="onMouseOut" @click="openUrl('http://li.usts.top')">
 				<Icon name="catalog" />
 				组件库
 			</li>
@@ -30,15 +30,15 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
 	name: 'HomeNav',
-    setup(props, context: any) {
-        return {
-            onMouseOut() {
-                context.emit('hover', 'home');
-            }
-        }
-    },
-	data() {
-		return {};
+	setup(props, context: any) {
+		return {
+			onMouseOut() {
+				context.emit('hover', 'home');
+			},
+			openUrl(url: any) {
+				window.open(url);
+			},
+		};
 	},
 });
 </script>
@@ -69,7 +69,7 @@ export default defineComponent({
 
 	> ul {
 		margin-left: 32px;
-        margin-bottom: -20px;
+		margin-bottom: -20px;
 
 		> li {
 			.flex-center-y();
@@ -80,9 +80,9 @@ export default defineComponent({
 				margin-right: 16px;
 			}
 
-            &:hover {
-                color: @color-menu-active;
-            }
+			&:hover {
+				color: @color-menu-active;
+			}
 		}
 	}
 }

@@ -1,8 +1,6 @@
 <template>
 	<template v-if="isFullPage">
-		<keep-alive>
-			<router-view />
-		</keep-alive>
+		<router-view />
 	</template>
 	<template v-else>
 		<div class="main-layout">

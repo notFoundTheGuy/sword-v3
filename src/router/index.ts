@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../pages/home/Home.vue';
 import Blog from '../pages/blog/index.vue';
+import BlogManage from '../pages/blog/manage.vue';
 import Lab from '../pages/lab/index.vue';
 import Writer from '../pages/Writer.vue';
 
@@ -14,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/blog',
         name: 'Blog',
         component: Blog
+    },
+    {
+        path: '/blog/manage',
+        name: 'BlogManage',
+        component: BlogManage
     },
     {
         path: '/lab',
