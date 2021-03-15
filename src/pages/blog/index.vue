@@ -19,7 +19,7 @@
 
 			<v-md-preview v-if="article" :text="article"></v-md-preview>
 			<div v-else>
-				Hello
+				Hello :)
 			</div>
 		</div>
 	</div>

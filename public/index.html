@@ -7,6 +7,91 @@
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
 	</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #1f2128;
+        }
+
+        .loading-wrap svg {
+            display: none;
+        }
+
+		.loader {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			filter: url(#gooey);
+		}
+
+		.loader li {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+			animation: loading-animate 4s ease-in-out infinite;
+			animation-delay: calc(0.2s * var(--i));
+		}
+
+		.loader li:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: calc(50% - 20px);
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			box-shadow: 0 0 30px #5445a4;
+			background: linear-gradient(#b9ecee, #5445a4);
+		}
+
+		@keyframes loading-animate {
+			0% {
+				transform: rotate(0deg);
+			}
+			50%,
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		li.board {
+			top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+			height: 60px;
+			animation: none;
+			border-radius: 0;
+			background: linear-gradient(#b9ecee, #5445a4);
+		}
+		li.board::before {
+			content: none;
+		}
+
+		.loading-wrap {
+			position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+		}
+		.loading-wrap > p {
+			position: absolute;
+			width: 100%;
+			top: 100%;
+			text-align: center;
+			line-height: 60px;
+			text-align: center;
+			color: #012c4d;
+			font-size: 20px;
+			font-weight: bold;
+		}
+    </style>
 	<body>
 		<noscript>
 			<strong
@@ -14,7 +99,34 @@
 				enabled. Please enable it to continue.</strong
 			>
 		</noscript>
-		<div id="app"></div>
+		<div id="app">
+            <div class="loading-wrap">
+                <ul class="loader">
+                    <li style="--i: 1"></li>
+                    <li style="--i: 2"></li>
+                    <li style="--i: 3"></li>
+                    <li style="--i: 4"></li>
+                    <li style="--i: 5"></li>
+                    <li style="--i: 6"></li>
+                    <li style="--i: 7"></li>
+                    <li class="board"></li>
+                </ul>
+                <p>Wait a minute . . .</p>
+                <svg>
+                    <filter id="gooey">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                        <feColorMatrix
+                            values="
+                            1 0 0 0 0
+                            0 1 0 0 0
+                            0 0 1 0 0
+                            0 0 0 20 -10
+                        "
+                        />
+                    </filter>
+                </svg>
+            </div>
+        </div>
 		<!-- built files will be auto injected -->
         <script src="//at.alicdn.com/t/font_2386144_zz9uxfcq8sg.js"></script>
 	</body>
