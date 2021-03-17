@@ -94,7 +94,7 @@ export default defineComponent({
 			transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg);
 		}
 	}
-	animation: animation1 15s infinite linear;
+	animation: animation1 20s infinite linear;
 	transform-style: preserve-3d;
 	.circle {
 		width: 10em;

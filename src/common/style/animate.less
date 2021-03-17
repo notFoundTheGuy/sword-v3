@@ -1,0 +1,80 @@
+:root {
+	--animate-duration: 1s;
+	--animate-timing-function: ease;
+	--animate-delay: 0s;
+	--animate-count: 1;
+	--animate-direction: normal;
+	--animate-mode: forwards;
+}
+
+.animate_property {
+	animation-duration: var(--animate-duration, 1s);
+	animation-timing-function: var(--animate-timing-function, ease);
+	animation-delay: var(--animate-delay, 0s);
+	animation-iteration-count: var(--animate-count, 1);
+	animation-direction: var(--animate-direction, normal);
+	animation-fill-mode: var(--animate-mode, forwards);
+}
+
+.animate_fadein {
+	.animate_property();
+	opacity: 0;
+	animation-name: fadeIn;
+}
+
+.animate_flyin_up {
+	.animate_property();
+    opacity: 0;
+	animation-name: flyInUp;
+}
+
+.animate_fadein_down {
+	.animate_property();
+    opacity: 0;
+	animation-name: flyInDown;
+}
+
+.animate_fadeOut {
+	.animate_property();
+	animation-name: fadeOut;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes flyInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(-150%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes flyInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(150%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}

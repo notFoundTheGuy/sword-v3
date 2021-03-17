@@ -52,15 +52,11 @@ export default defineComponent({
 <style lang="less" scoped>
 // 防止外层使用svg symbol时覆盖
 svg.sword-icon {
+    font-size: 24px;
 	width: 1em;
 	height: 1em;
 	vertical-align: -0.15em;
 	fill: currentColor;
 	overflow: hidden;
-}
-
-.font-icon {
-	width: 1em;
-	height: 1em;
 }
 </style>

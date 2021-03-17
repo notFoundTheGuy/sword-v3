@@ -4,31 +4,31 @@
 		<section>
 			<Nav @hover="onNavHover" />
 
-			<div class="card-wrap">
+			<div class="card-wrap animate_fadein">
 				<p>Hei Buddy,</p>
 				<p>Welcome back 👋</p>
 				<div :class="{ invisible: curNav !== 'home' }">
-					<p>试试惯性过弯</p>
-					<div class="ball-wrap">
+					<p style="font-size: 20px">上帝为了补偿人间诸般烦恼事，<br>给了我们希望和睡眠</p>
+					<div class="ball-wrap animate_fadein" style="--animate-duration: 0.6s" v-if="ballShow">
 						<RotateBall />
 					</div>
 					<!-- <BallBox class="ball-box" /> -->
 				</div>
 				<div :class="{ invisible: curNav !== 'blog' }">
-					<p>平时写写</p>
-					<img src="@/assets/imgs/colorful-ball.png" ondragstart="return false;"/>
+					<p>跬步积，千里至</p>
+					<img src="@/assets/imgs/colorful-ball.png" ondragstart="return false;" />
 				</div>
 				<div :class="{ invisible: curNav !== 'lab' }">
-					<p>随便试试</p>
-					<img src="@/assets/imgs/triangle.png" ondragstart="return false;"/>
+					<p>实践是检验真理的唯一标准</p>
+					<img src="@/assets/imgs/triangle.png" ondragstart="return false;" />
 				</div>
 				<div :class="{ invisible: curNav !== 'components' }">
-					<p>将就用用</p>
-					<img src="@/assets/imgs/orange-ball.png" ondragstart="return false;"/>
+					<p>我思故我在</p>
+					<img src="@/assets/imgs/orange-ball.png" ondragstart="return false;" />
 				</div>
 				<div :class="{ invisible: curNav !== 'about' }">
-					<p>介绍一下</p>
-					<img src="@/assets/imgs/wind.png" ondragstart="return false;"/>
+					<p>ABOUT ME</p>
+					<img src="@/assets/imgs/wind.png" ondragstart="return false;" />
 				</div>
 			</div>
 		</section>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
 // import BallBox from '@c/3D/ballbox';
 import Nav from './Nav.vue';
 import RotateBall from '../lab/css/RotateBall';
@@ -46,6 +46,13 @@ export default defineComponent({
 	name: 'Home',
 	setup() {
 		let curNav = ref('home');
+		let ballShow = ref(false);
+
+		onMounted(() => {
+			setTimeout(() => {
+				ballShow.value = true;
+			}, 1200);
+		});
 
 		let onNavHover = (nav) => {
 			curNav.value = nav;
@@ -54,6 +61,7 @@ export default defineComponent({
 		return {
 			curNav,
 			onNavHover,
+			ballShow,
 		};
 	},
 	components: {
@@ -75,7 +83,6 @@ export default defineComponent({
 		left: 50%;
 		transform: translate(-50%, -50%);
 		display: flex;
-		// align-items: center;
 		justify-content: center;
 
 		.card-wrap {

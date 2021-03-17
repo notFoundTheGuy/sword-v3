@@ -1,5 +1,5 @@
 <template>
-	<div class="star-sky">
+	<div class="star-sky animate_fadein" style="--animate-duration: 3s">
 		<div class="stars" ref="starsRef">
 			<div class="star" v-for="(item, index) in count"></div>
 		</div>
@@ -14,7 +14,7 @@ export default defineComponent({
 	setup() {
 		let starsRef = ref(null);
 
-		let count = 500;
+		let count = 200;
 		let distance = 1000;
         // let count = 900;
 		// let distance = 800;
@@ -54,7 +54,6 @@ export default defineComponent({
 	// background: radial-gradient(200% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
 	background-attachment: fixed;
 	overflow: hidden;
-    animation: fadeIn 1s linear forwards;
 }
 
 @keyframes rotate {
@@ -63,15 +62,6 @@ export default defineComponent({
 	}
 	100% {
 		transform: perspective(400px) rotateZ(20deg) rotateX(-40deg) rotateY(-360deg);
-	}
-}
-
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
 	}
 }
 

@@ -1,22 +1,24 @@
 <template>
-	<StarSky />
-	<div class="main-menu">
-		<a-menu mode="inline" style="width: 100%" @select="onMenuSelect">
-			<a-sub-menu v-for="(item, index) in menu">
-				<template #title>
-					{{ item.name }}
-				</template>
+	<section>
+		<StarSky />
+		<div class="main-menu">
+			<a-menu mode="inline" style="width: 100%" @select="onMenuSelect">
+				<a-sub-menu v-for="(item, index) in menu">
+					<template #title>
+						{{ item.name }}
+					</template>
 
-				<a-menu-item v-for="(subItem, subIndex) in item.children">
-					{{ subItem.name }}
-				</a-menu-item>
-			</a-sub-menu>
-		</a-menu>
-	</div>
+					<a-menu-item v-for="(subItem, subIndex) in item.children">
+						{{ subItem.name }}
+					</a-menu-item>
+				</a-sub-menu>
+			</a-menu>
+		</div>
 
-	<div class="main-content">
-		😄
-	</div>
+		<div class="main-content">
+			😄
+		</div>
+	</section>
 </template>
 
 <script lang="ts">
@@ -30,8 +32,8 @@ export default defineComponent({
 		let menu = ref();
 
 		const onMenuSelect = (item: any) => {
-            console.log(item)
-        };
+			console.log(item);
+		};
 
 		onMounted(() => {
 			menu.value = LabList;

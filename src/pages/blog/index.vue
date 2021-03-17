@@ -1,28 +1,30 @@
 <template>
-	<div class="main-menu">
-		<a-menu mode="inline" style="width: 100%" @select="onMenuSelect" :openKeys="openKeys">
-			<a-sub-menu v-for="(item, index) in menu" :key="item._id" @titleClick="onSubMenuClick(item)">
-				<template #title>
-					{{ item.name }}
-				</template>
+    <section>
+        <div class="main-menu">
+            <a-menu mode="inline" style="width: 100%" @select="onMenuSelect" :openKeys="openKeys">
+                <a-sub-menu v-for="(item, index) in menu" :key="item._id" @titleClick="onSubMenuClick(item)">
+                    <template #title>
+                        {{ item.name }}
+                    </template>
 
-				<a-menu-item v-for="(subItem, subIndex) in item.children" :key="subItem.id">
-					{{ subItem.name }}
-				</a-menu-item>
-			</a-sub-menu>
-		</a-menu>
-	</div>
+                    <a-menu-item v-for="(subItem, subIndex) in item.children" :key="subItem.id">
+                        {{ subItem.name }}
+                    </a-menu-item>
+                </a-sub-menu>
+            </a-menu>
+        </div>
 
-	<div class="main-content">
-		<div :class="{ animate__fadeOut: loading, animate__fadeIn: !loading }" class="animate__animated">
-			<p class="title">{{ title }}</p>
+        <div class="main-content">
+            <div :class="{ animate__fadeOut: loading, animate__fadeIn: !loading }" class="animate__animated">
+                <p class="title">{{ title }}</p>
 
-			<v-md-preview v-if="article" :text="article"></v-md-preview>
-			<div v-else>
-				Hello :)
-			</div>
-		</div>
-	</div>
+                <v-md-preview v-if="article" :text="article"></v-md-preview>
+                <div v-else>
+                    Hello :)
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script lang="ts">

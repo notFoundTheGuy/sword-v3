@@ -47,12 +47,19 @@ export default defineComponent({
 .home-nav {
 	position: relative;
 	color: @color-menu;
+    @animate-duration: 0.4s;
 
 	.logo {
+		.animate_property();
+		opacity: 0;
+		animation-duration: @animate-duration;
+		animation-name: flyInDown;
+
 		font-size: 32px;
 		color: #fff;
 		margin: 20px 80px 50px 0;
-		min-width: 175px;
+		width: 175px;
+		height: 50px;
 
 		.sword-icon {
 			margin-right: 10px;
@@ -60,6 +67,11 @@ export default defineComponent({
 	}
 
 	i.border {
+		.animate_property();
+		opacity: 0;
+		animation-name: flyInUp;
+        animation-duration: @animate-duration;
+
 		position: absolute;
 		right: 0;
 		top: 0;
@@ -73,8 +85,22 @@ export default defineComponent({
 
 		> li {
 			.flex-center-y();
+			.animate_property();
+			opacity: 0;
+			animation-name: flyInDown;
+			animation-duration: 1s;
+
 			padding: 40px 0;
 			cursor: pointer;
+			&:nth-child(2) {
+				animation-delay: 0.1s;
+			}
+			&:nth-child(3) {
+				animation-delay: 0.2s;
+			}
+			&:nth-child(4) {
+				animation-delay: 0.3s;
+			}
 
 			.sword-icon {
 				margin-right: 16px;
