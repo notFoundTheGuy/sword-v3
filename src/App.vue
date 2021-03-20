@@ -1,4 +1,5 @@
 <template>
+    <StarSky />
 	<transition name="fade">
 		<template v-if="isFullPage">
 			<router-view />
@@ -20,6 +21,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TopBar from '@/views/TopBar.vue';
+import StarSky from './pages/lab/css/StarSky.vue';
 
 // names
 const FULL_PAGES = ['Writer', 'Home'];
@@ -32,6 +34,7 @@ export default defineComponent({
 	},
 	components: {
 		TopBar,
+        StarSky
 	},
 	computed: {
 		isFullPage() {

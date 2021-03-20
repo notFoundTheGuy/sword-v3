@@ -21,7 +21,7 @@
 			</ul>
 			<div class="user-wrap animate_flyin_up" style="--animate-delay: 0.5s">
 				<div>
-					<img src="@/assets/imgs/avatar.jpeg" />
+					<img src="@/assets/imgs/avatar3.jpg" />
 				</div>
 				<div>
 					<p>JIAN LI</p>

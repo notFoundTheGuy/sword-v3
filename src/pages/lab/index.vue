@@ -1,6 +1,5 @@
 <template>
 	<section>
-		<StarSky />
 		<div class="main-menu">
 			<a-menu mode="inline" style="width: 100%" @select="onMenuSelect">
 				<a-sub-menu v-for="(item, index) in menu">
@@ -24,7 +23,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
 import LabList from './LabList';
-import StarSky from './css/StarSky.vue';
 
 export default defineComponent({
 	name: 'Lab',
@@ -43,9 +41,6 @@ export default defineComponent({
 			menu,
 			onMenuSelect,
 		};
-	},
-	components: {
-		StarSky,
 	},
 });
 </script>

@@ -1,7 +1,5 @@
 <template>
 	<div class="home-wrap">
-        <StarSky />
-
 		<section>
 			<Nav @hover="onNavHover" />
 
@@ -41,7 +39,6 @@ import { defineComponent, onMounted, ref } from 'vue';
 // import BallBox from '@c/3D/ballbox';
 import Nav from './Nav.vue';
 import RotateBall from '../lab/css/RotateBall';
-import StarSky from '../lab/css/StarSky';
 
 export default defineComponent({
 	name: 'Home',
@@ -68,8 +65,7 @@ export default defineComponent({
 	components: {
 		// BallBox,
 		RotateBall,
-		Nav,
-		StarSky,
+		Nav
 	},
 });
 </script>
