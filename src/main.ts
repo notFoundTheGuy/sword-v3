@@ -16,6 +16,21 @@ VueMarkdownEditor.use(vuepressTheme);
 VMdPreview.use(vuepressTheme);
 
 let app = createApp(App);
+
+// 全局组件-- 组件注册需要写在mount之前
+import Icon from '@c/Icon.vue';
+app.component('Icon', Icon);
+// ant-design
+import { Button, Select, Space, Menu, Popconfirm } from 'ant-design-vue';
+app.component('AButton', Button);
+app.component('ASelect', Select);
+app.component('ASelectOption', Select.Option);
+app.component('ASpace', Space);
+app.component('AMenu', Menu);
+app.component('ASubMenu', Menu.SubMenu);
+app.component('AMenuItem', Menu.Item);
+app.component('APopconfirm', Popconfirm);
+
 app.use(store)
 	.use(router)
 	.use(VueMarkdownEditor)
@@ -43,18 +58,3 @@ declare module '@vue/runtime-core' {
 		$notify: any;
 	}
 }
-
-// 全局组件
-import Icon from '@c/Icon.vue';
-app.component('Icon', Icon);
-
-// ant-design
-import { Button, Select, Space, Menu, Popconfirm } from 'ant-design-vue';
-app.component('AButton', Button);
-app.component('ASelect', Select);
-app.component('ASelectOption', Select.Option);
-app.component('ASpace', Space);
-app.component('AMenu', Menu);
-app.component('ASubMenu', Menu.SubMenu);
-app.component('AMenuItem', Menu.Item);
-app.component('APopconfirm', Popconfirm);

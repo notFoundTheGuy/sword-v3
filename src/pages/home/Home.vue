@@ -1,6 +1,7 @@
 <template>
-	<StarSky />
 	<div class="home-wrap">
+        <StarSky />
+
 		<section>
 			<Nav @hover="onNavHover" />
 

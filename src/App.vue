@@ -8,7 +8,7 @@
 			<div class="main-layout" :class="{ none: !loading && isHome }">
 				<TopBar />
 				<router-view v-slot="{ Component }">
-					<transition name="slide" mode="out-in" appear="true">
+					<transition name="slide" mode="out-in" :appear="true">
 						<component :is="Component" />
 					</transition>
 				</router-view>
