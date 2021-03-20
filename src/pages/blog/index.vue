@@ -1,79 +1,43 @@
 <template>
-    <section>
-        <div class="main-menu">
-            <a-menu mode="inline" style="width: 100%" @select="onMenuSelect" :openKeys="openKeys">
-                <a-sub-menu v-for="(item, index) in menu" :key="item._id" @titleClick="onSubMenuClick(item)">
-                    <template #title>
-                        {{ item.name }}
-                    </template>
+	<section>
+		<div class="main-menu">
+			<Suspense>
+				<BlogMenu v-model:value="selectKey" />
+			</Suspense>
+		</div>
 
-                    <a-menu-item v-for="(subItem, subIndex) in item.children" :key="subItem.id">
-                        {{ subItem.name }}
-                    </a-menu-item>
-                </a-sub-menu>
-            </a-menu>
-        </div>
+		<div class="main-content">
+			<div :class="{ animate_fadeout: loading, animate_fadein: !loading }">
+				<p class="title">{{ title }}</p>
 
-        <div class="main-content">
-            <div :class="{ animate__fadeOut: loading, animate__fadeIn: !loading }" class="animate__animated">
-                <p class="title">{{ title }}</p>
-
-                <v-md-preview v-if="article" :text="article"></v-md-preview>
-                <div v-else>
-                    Hello :)
-                </div>
-            </div>
-        </div>
-    </section>
+				<v-md-preview v-if="article" :text="article"></v-md-preview>
+				<div v-else>
+					Hello :)
+				</div>
+			</div>
+		</div>
+	</section>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, reactive, toRef, toRefs } from 'vue';
+import { defineComponent, ref } from 'vue';
 import useArticle from './useArticle';
-import { fetchDir } from './api/directory';
+import BlogMenu from './BlogMenu.vue';
 
 export default defineComponent({
 	name: 'Blog',
+	components: {
+		BlogMenu,
+	},
 	setup(props, context) {
-		const state = reactive({
-			openKeys: [''],
-			curArticleId: '',
-			menu: [],
-		});
+		let selectKey = ref('');
 
-		const { title, article, loading } = useArticle(toRef(state, 'curArticleId'));
-
-		const onMenuSelect = (item: any) => {
-			state.curArticleId = item.key;
-		};
-
-		const onSubMenuClick = (item: any) => {
-			state.openKeys = [item._id];
-		};
-
-        // 鼠标hover方式打开
-		// const onSubMenuEnter = (item: any) => {
-		// 	state.openKeys = [item._id];
-		// };
-
-		// const onSubMenuLeave = () => {
-		// 	state.openKeys = [];
-		// };
-
-		const getDir = async () => {
-			state.menu = await fetchDir();
-		};
-
-		onMounted(getDir);
+		const { title, article, loading } = useArticle(selectKey);
 
 		return {
-			...toRefs(state),
+			selectKey,
 			title,
 			article,
-			onMenuSelect,
-			onSubMenuClick,
-			// onSubMenuEnter,
-			// onSubMenuLeave,
 			loading,
 		};
 	},

@@ -121,7 +121,7 @@ export default defineComponent({
 					margin-bottom: 45px;
 				}
 
-				@img-width: 350px;
+				@img-width: 300px;
 				> img {
 					width: @img-width;
 				}

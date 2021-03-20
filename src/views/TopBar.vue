@@ -2,7 +2,9 @@
 	<header>
 		<div>
 			<div class="logo-wrap" @click="$router.push('/')">
-				<img src="@/assets/imgs/logo.png" alt="π" />
+				<div class="animate_fadein" style="--animate-delay: 0.2s">
+					<img src="@/assets/imgs/logo.png" alt="π"/>
+				</div>
 			</div>
 			<ul class="nav-warp">
 				<li
@@ -17,7 +19,7 @@
 					{{ item.name }}
 				</li>
 			</ul>
-			<div class="user-wrap">
+			<div class="user-wrap animate_flyin_up" style="--animate-delay: 0.5s">
 				<div>
 					<img src="@/assets/imgs/avatar.jpeg" />
 				</div>
@@ -121,8 +123,12 @@ header {
 			.flex-center();
 			width: @side-menu-width;
 			cursor: pointer;
-			> img {
+            > div {
+                font-size: 0;
+            }
+			img {
 				width: 140px;
+                margin-top: 5px;
 			}
 		}
 		ul {
