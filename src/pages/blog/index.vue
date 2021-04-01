@@ -6,13 +6,13 @@
 			</Suspense>
 		</div>
 
-		<div class="main-content">
+		<div class="main-content" ref="mainContent">
 			<div :class="{ animate_fadeout: loading, animate_fadein: !loading }">
 				<p class="title">{{ title }}</p>
 
 				<v-md-preview v-if="article" :text="article"></v-md-preview>
 				<div v-else>
-					Hello :)
+					最近访问
 				</div>
 			</div>
 		</div>
@@ -20,7 +20,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, watch } from 'vue';
+import {  useRouter, useRoute } from 'vue-router';
 import useArticle from './useArticle';
 import BlogMenu from './BlogMenu.vue';
 
@@ -30,15 +31,27 @@ export default defineComponent({
 		BlogMenu,
 	},
 	setup(props, context) {
-		let selectKey = ref('');
+        const router = useRouter();
+        const route = useRoute();
+		let mainContent = ref();
+		let selectKey = ref(route.params.id);
 
 		const { title, article, loading } = useArticle(selectKey);
+
+		watch(loading, () => {
+			mainContent.value.scrollTo(0, 0);
+		});
+
+		watch(selectKey, () => {
+            router.push(`/blog/${selectKey.value}`);
+		});
 
 		return {
 			selectKey,
 			title,
 			article,
 			loading,
+			mainContent,
 		};
 	},
 });

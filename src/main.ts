@@ -3,8 +3,6 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-require('./common/style/lib/animate.css');
-
 // v-md-editor
 import VueMarkdownEditor from '@kangc/v-md-editor';
 import VMdPreview from '@kangc/v-md-editor/lib/preview';

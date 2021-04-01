@@ -13,6 +13,11 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: '/blog',
+        name: 'BlogIndex',
+        component: Blog
+    },
+    {
+        path: '/blog/:id',
         name: 'Blog',
         component: Blog
     },

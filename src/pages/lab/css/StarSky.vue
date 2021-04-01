@@ -54,6 +54,8 @@ export default defineComponent({
 	// background: radial-gradient(200% 105% at top center, #1b2947 10%, #75517d 40%, #e96f92 65%, #f7f7b6);
 	background-attachment: fixed;
 	overflow: hidden;
+
+    will-change: transform;
 }
 
 @keyframes rotate {
