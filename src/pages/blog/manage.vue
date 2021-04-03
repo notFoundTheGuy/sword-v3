@@ -111,7 +111,7 @@ export default defineComponent({
 		right: 10px;
 		top: 10px;
 		&:hover {
-			color: @topicColor;
+			color: @color-primary;
 		}
 	}
 }

@@ -108,7 +108,7 @@ export default defineComponent({
 			top: 0;
 			min-width: 160px;
 			min-height: 300px;
-			background: @color-part-pop;
+			background: @color-bg-secondary;
 			box-shadow: @shadow;
 			color: @color-text;
 			padding: 10px;

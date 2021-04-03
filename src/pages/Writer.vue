@@ -92,7 +92,7 @@ export default defineComponent({
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		border-bottom: @border-grey;
+		border-bottom: 1px solid @color-border;
 		input {
 			height: 30px;
 			line-height: 30px;
