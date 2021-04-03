@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import MenuList from '@v/MenuList.vue';
+import MenuList from './views/MenuList.vue';
 import AddInput from '@c/AddInput.vue';
 
 export default defineComponent({
