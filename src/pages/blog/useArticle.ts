@@ -1,9 +1,9 @@
 import { fetchArticle } from './api/articles';
-import { onMounted, ref, watch, toRefs } from 'vue';
+import { onMounted, ref, watch, nextTick } from 'vue';
 
 export default function useArticle(id: any) {
-	const title = ref(null);
-	const article = ref(null);
+	const title = ref('');
+	const article = ref('');
 	const loading = ref(false);
 
 	const getArticleById = async () => {
@@ -13,6 +13,13 @@ export default function useArticle(id: any) {
 			loading.value = false;
 			article.value = res.content;
 			title.value = res.title;
+		} else {
+			loading.value = true;
+			nextTick(() => {
+				loading.value = false;
+			});
+			article.value = '';
+			title.value = '';
 		}
 	};
 

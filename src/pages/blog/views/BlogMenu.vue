@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs, watch } from 'vue';
-import { fetchDir } from './api/directory';
+import { fetchDir } from '../api/directory';
 
 export default defineComponent({
 	async setup(props, context) {

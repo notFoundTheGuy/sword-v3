@@ -2,3 +2,27 @@ i.border {
     display: block;
     background: @color-border;
 }
+
+h1,h2,h3,h4,h5,h6 {
+    color: @color-text;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.65rem;
+    font-weight: 600;
+}
+
+a {
+    color: @color-green;
+    &:hover {
+        text-decoration: underline;
+        color: @color-green;
+        filter: brightness(130%);
+        cursor: pointer;
+    }
+}
