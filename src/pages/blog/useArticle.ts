@@ -7,19 +7,17 @@ export default function useArticle(id: any) {
 	const loading = ref(false);
 
 	const getArticleById = async () => {
+        loading.value = true;
 		if (id.value) {
-			loading.value = true;
 			let res = await fetchArticle(id.value);
 			loading.value = false;
 			article.value = res.content;
 			title.value = res.title;
 		} else {
-			loading.value = true;
 			nextTick(() => {
 				loading.value = false;
 			});
-			article.value = '';
-			title.value = '';
+			article.value = title.value ='';
 		}
 	};
 
