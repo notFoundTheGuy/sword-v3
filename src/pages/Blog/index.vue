@@ -2,7 +2,13 @@
 	<section>
 		<div class="main-menu">
 			<Suspense>
-				<BlogMenu v-model:value="selectKey" />
+                <template #default>
+                    <BlogMenu v-model:value="selectKey" />
+                </template>
+				
+                <template #fallback>
+                    loading...
+                </template>
 			</Suspense>
 		</div>
 

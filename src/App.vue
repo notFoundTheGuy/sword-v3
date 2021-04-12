@@ -108,12 +108,9 @@ export default defineComponent({
 
 .slide-enter-active,
 .slide-leave-active {
-	transition: all 0.3s;
-	.main-menu {
-		transition: all 0.3s;
-	}
-	.main-content {
-		transition: all 0.3s;
+	transition: opacity 0.3s;
+	.main-menu, .main-content {
+		transition: transform 0.3s;
 	}
 }
 

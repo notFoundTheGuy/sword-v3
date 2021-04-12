@@ -2,6 +2,8 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import axios from './common/axios';
+import qs from 'qs';
 
 // v-md-editor
 import VueMarkdownEditor from '@kangc/v-md-editor';
@@ -19,7 +21,7 @@ let app = createApp(App);
 import Icon from '@c/Icon.vue';
 app.component('Icon', Icon);
 // ant-design
-import { Button, Select, Space, Menu, Popconfirm } from 'ant-design-vue';
+import { Button, Select, Space, Menu, Popconfirm, notification } from 'ant-design-vue';
 app.component('AButton', Button);
 app.component('ASelect', Select);
 app.component('ASelectOption', Select.Option);
@@ -40,12 +42,9 @@ require('./common/style/index.less');
 
 // 全局配置
 app.config.performance = true;
-import axios from './common/axios';
-import qs from 'qs';
 app.config.globalProperties.$post = axios.post;
 app.config.globalProperties.$get = axios.get;
 app.config.globalProperties.$qs = qs;
-import { notification } from 'ant-design-vue';
 app.config.globalProperties.$notify = notification;
 
 declare module '@vue/runtime-core' {

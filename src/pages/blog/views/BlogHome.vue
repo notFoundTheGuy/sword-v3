@@ -59,7 +59,6 @@ export default defineComponent({
 		};
 	},
 	setup(props, context) {
-		console.log('setup');
 		let onLinkClick = (item: any) => {
 			context.emit('turnTo', item.id);
 		};
@@ -67,13 +66,7 @@ export default defineComponent({
 		return {
 			onLinkClick,
 		};
-	},
-	beforeCreate() {
-		console.log('beforeCreate');
-	},
-	created() {
-		console.log('created');
-	},
+	}
 });
 </script>
 

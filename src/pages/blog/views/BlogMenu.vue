@@ -29,15 +29,6 @@ export default defineComponent({
 			state.openKeys = [item._id];
 		};
 
-		// 鼠标hover方式打开
-		// const onSubMenuEnter = (item: any) => {
-		// 	state.openKeys = [item._id];
-		// };
-
-		// const onSubMenuLeave = () => {
-		// 	state.openKeys = [];
-		// };
-
 		watch(
 			() => state.selectedKeys,
 			function() {
