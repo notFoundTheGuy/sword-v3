@@ -14,7 +14,7 @@
 					<!-- <BallBox class="ball-box" /> -->
 				</div>
 				<div :class="{ invisible: curNav !== 'blog' }">
-					<p>跬步积，千里至</p>
+					<p>优雅，永不过时</p>
 					<img src="@/assets/imgs/colorful-ball.png" ondragstart="return false;" />
 				</div>
 				<div :class="{ invisible: curNav !== 'lab' }">
