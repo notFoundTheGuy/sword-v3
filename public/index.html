@@ -7,24 +7,47 @@
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 		<title>我不是苏格拉底</title>
 	</head>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
 
-        .loading-wrap svg {
-            display: none;
-        }
+		body {
+			background: #1f2128;
+		}
 
-		.loader {
+        .open-loading-wrap {
+			position: fixed;
+			top: 30%;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+        
+		.open-loading-wrap > p {
+			position: absolute;
+			width: 100%;
+			top: 100%;
+			text-align: center;
+			line-height: 60px;
+			text-align: center;
+			color: #012c4d;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.open-loading-wrap svg {
+			display: none;
+		}
+
+		.open-loading-wrap .loader {
 			position: relative;
 			width: 200px;
 			height: 200px;
 			filter: url(#gooey);
 		}
 
-		.loader li {
+		.open-loading-wrap .loader li {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -35,7 +58,7 @@
 			animation-delay: calc(0.2s * var(--i));
 		}
 
-		.loader li:before {
+		.open-loading-wrap .loader li:before {
 			content: '';
 			position: absolute;
 			top: 0;
@@ -57,57 +80,39 @@
 			}
 		}
 
-		li.board {
+		.open-loading-wrap li.board {
 			top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150%;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 150%;
 			height: 60px;
 			animation: none;
 			border-radius: 0;
 			background: linear-gradient(#b9ecee, #5445a4);
 		}
-		li.board::before {
+		.open-loading-wrap li.board::before {
 			content: none;
 		}
 
-		.loading-wrap {
-			position: fixed;
-            top: 30%;
-            left: 50%;
-            transform: translateX(-50%);
-		}
-		.loading-wrap > p {
-			position: absolute;
-			width: 100%;
-			top: 100%;
-			text-align: center;
-			line-height: 60px;
-			text-align: center;
-			color: #012c4d;
-			font-size: 20px;
-			font-weight: bold;
+		.h5-placeholder {
+			display: none;
 		}
 
-        .h5-placeholder {
-            display: none;
-        }
+		/* 临时方案 */
+		@media screen and (max-width: 600px) {
+			body {
+				background: #1f2128 !important;
+			}
 
-        /* 临时方案 */
-        @media screen and (max-width: 600px) {
-            body {
-                background: #1f2128 !important;
-            }
+			#app {
+				display: none !important;
+			}
 
-            #app {
-                display: none !important;
-            }
-
-            .h5-placeholder {
-                display: block;
-            }
-        }
-    </style>
+			.h5-placeholder {
+				display: block;
+			}
+		}
+	</style>
 	<body>
 		<noscript>
 			<strong
@@ -116,63 +121,63 @@
 			>
 		</noscript>
 		<div id="app">
-            <div class="loading-wrap">
-                <ul class="loader">
-                    <li style="--i: 1"></li>
-                    <li style="--i: 2"></li>
-                    <li style="--i: 3"></li>
-                    <li style="--i: 4"></li>
-                    <li style="--i: 5"></li>
-                    <li style="--i: 6"></li>
-                    <li style="--i: 7"></li>
-                    <li class="board"></li>
-                </ul>
-                <p>Wait a minute . . .</p>
-                <svg>
-                    <filter id="gooey">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-                        <feColorMatrix
-                            values="
+			<div class="open-loading-wrap">
+				<ul class="loader">
+					<li style="--i: 1"></li>
+					<li style="--i: 2"></li>
+					<li style="--i: 3"></li>
+					<li style="--i: 4"></li>
+					<li style="--i: 5"></li>
+					<li style="--i: 6"></li>
+					<li style="--i: 7"></li>
+					<li class="board"></li>
+				</ul>
+				<p>Wait a minute . . .</p>
+				<svg>
+					<filter id="gooey">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+						<feColorMatrix
+							values="
                             1 0 0 0 0
                             0 1 0 0 0
                             0 0 1 0 0
                             0 0 0 20 -10
                         "
-                        />
-                    </filter>
-                </svg>
-            </div>
-        </div>
+						/>
+					</filter>
+				</svg>
+			</div>
+		</div>
 
-        <div class="h5-placeholder">
-            <div class="loading-wrap">
-                <ul class="loader">
-                    <li style="--i: 1"></li>
-                    <li style="--i: 2"></li>
-                    <li style="--i: 3"></li>
-                    <li style="--i: 4"></li>
-                    <li style="--i: 5"></li>
-                    <li style="--i: 6"></li>
-                    <li style="--i: 7"></li>
-                    <li class="board"></li>
-                </ul>
-                <p>移动平台建设中...</p>
-                <svg>
-                    <filter id="gooey">
-                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
-                        <feColorMatrix
-                            values="
+		<div class="h5-placeholder">
+			<div class="open-loading-wrap">
+				<ul class="loader">
+					<li style="--i: 1"></li>
+					<li style="--i: 2"></li>
+					<li style="--i: 3"></li>
+					<li style="--i: 4"></li>
+					<li style="--i: 5"></li>
+					<li style="--i: 6"></li>
+					<li style="--i: 7"></li>
+					<li class="board"></li>
+				</ul>
+				<p>移动平台建设中...</p>
+				<svg>
+					<filter id="gooey">
+						<feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+						<feColorMatrix
+							values="
                             1 0 0 0 0
                             0 1 0 0 0
                             0 0 1 0 0
                             0 0 0 20 -10
                         "
-                        />
-                    </filter>
-                </svg>
-            </div>
-        </div>
+						/>
+					</filter>
+				</svg>
+			</div>
+		</div>
 		<!-- built files will be auto injected -->
-        <script src="//at.alicdn.com/t/font_2386144_a6z460jym7.js"></script>
+		<script src="//at.alicdn.com/t/font_2386144_a6z460jym7.js"></script>
 	</body>
 </html>

@@ -7,7 +7,7 @@
                 </template>
 				
                 <template #fallback>
-                    loading...
+                    <LoadingStairs />
                 </template>
 			</Suspense>
 		</div>
@@ -31,12 +31,14 @@ import { useRouter, useRoute } from 'vue-router';
 import useArticle from './useArticle';
 import BlogMenu from './views/BlogMenu.vue';
 import BlogHome from './views/BlogHome.vue';
+import LoadingStairs from '@/pages/lab/css/loading/Stairs.vue';
 
 export default defineComponent({
 	name: 'Blog',
 	components: {
 		BlogMenu,
 		BlogHome,
+        LoadingStairs
 	},
 	setup(props, context) {
 		const router = useRouter();
@@ -86,5 +88,10 @@ export default defineComponent({
 	font-weight: 700;
 	line-height: 1.5;
 	color: @color-text;
+}
+.main-menu {
+    .loader-stairs {
+        margin: 160px auto 0;
+    }
 }
 </style>
