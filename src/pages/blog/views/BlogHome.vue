@@ -27,6 +27,12 @@ export default defineComponent({
 					overview:
 						'津津乐道的二进制在业务中用不到？！本文收集二进制、按位运算在实际业务常见中的一些巧妙应用实例，记录一些相关的思考，感受代码的魅力。包含一些常见的按位运算的介绍（& 交集，｜ 并集，^ 异或，～ 取反），持续更新. . . ',
 				},
+                {
+                    id: '0',
+                    title: 'Vue 3.0 图谱',
+                    overview: '根据官网的API参考和关于V3的更新内容，绘制的一份学习总结图谱。如有纰漏，欢迎指正。',
+                    url: 'http://www.lijian.run/libs/vue3-graph.html'
+                },
 				{
 					id: '6073b37298190207e90127e5',
 					title: '十行代码手撸一个图片懒加载',
@@ -60,7 +66,11 @@ export default defineComponent({
 	},
 	setup(props, context) {
 		let onLinkClick = (item: any) => {
-			context.emit('turnTo', item.id);
+            if (item.url) {
+                window.open(item.url);
+            } else {
+                context.emit('turnTo', item.id);
+            }
 		};
 
 		return {

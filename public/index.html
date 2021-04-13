@@ -12,9 +12,6 @@
             margin: 0;
             padding: 0;
         }
-        body {
-            background: #1f2128;
-        }
 
         .loading-wrap svg {
             display: none;
@@ -91,6 +88,25 @@
 			font-size: 20px;
 			font-weight: bold;
 		}
+
+        .h5-placeholder {
+            display: none;
+        }
+
+        /* 临时方案 */
+        @media screen and (max-width: 600px) {
+            body {
+                background: #1f2128 !important;
+            }
+
+            #app {
+                display: none !important;
+            }
+
+            .h5-placeholder {
+                display: block;
+            }
+        }
     </style>
 	<body>
 		<noscript>
@@ -112,6 +128,35 @@
                     <li class="board"></li>
                 </ul>
                 <p>Wait a minute . . .</p>
+                <svg>
+                    <filter id="gooey">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+                        <feColorMatrix
+                            values="
+                            1 0 0 0 0
+                            0 1 0 0 0
+                            0 0 1 0 0
+                            0 0 0 20 -10
+                        "
+                        />
+                    </filter>
+                </svg>
+            </div>
+        </div>
+
+        <div class="h5-placeholder">
+            <div class="loading-wrap">
+                <ul class="loader">
+                    <li style="--i: 1"></li>
+                    <li style="--i: 2"></li>
+                    <li style="--i: 3"></li>
+                    <li style="--i: 4"></li>
+                    <li style="--i: 5"></li>
+                    <li style="--i: 6"></li>
+                    <li style="--i: 7"></li>
+                    <li class="board"></li>
+                </ul>
+                <p>移动平台建设中...</p>
                 <svg>
                     <filter id="gooey">
                         <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
