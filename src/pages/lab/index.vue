@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="main-content">
-			😄
+			陆续整理中。。。
 		</div>
 	</section>
 </template>

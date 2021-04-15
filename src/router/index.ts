@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import Home from '../pages/home/Home.vue';
+import Home from '../pages/home/index.vue';
 import Blog from '../pages/blog/index.vue';
 import BlogManage from '../pages/blog/manage.vue';
 import Lab from '../pages/lab/index.vue';
 import Writer from '../pages/Writer.vue';
+import About from '../pages/About.vue';
 
 const routes: Array<RouteRecordRaw> = [
 	{
@@ -30,6 +31,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/lab',
         name: 'Lab',
         component: Lab
+    },
+    {
+        path: '/about',
+        name: 'About',
+        component: About
     },
     {
         path: '/writer',

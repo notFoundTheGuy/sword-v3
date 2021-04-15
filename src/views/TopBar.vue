@@ -32,7 +32,7 @@
 		</div>
 	</header>
 
-	<i class="border"></i>
+	<i class="border" v-if="!isNoBorder"></i>
 </template>
 
 <script lang="ts">
@@ -57,6 +57,11 @@ export default defineComponent({
 		isComponents(): boolean {
 			return this.$route.name === 'Components';
 		},
+        isNoBorder(): boolean {
+            const NO_BORDER_ROUTES = ['About']
+            // @ts-ignore
+            return NO_BORDER_ROUTES.indexOf(this.$route.name) > -1;
+        }
 	},
 	data() {
 		return {
