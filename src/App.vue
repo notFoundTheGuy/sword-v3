@@ -1,5 +1,5 @@
 <template>
-    <StarSky />
+  <StarSky />
 	<transition name="fade">
 		<template v-if="isFullPage">
 			<router-view />
@@ -16,6 +16,9 @@
 			</div>
 		</template>
 	</transition>
+	<footer>
+		<a href="https://beian.miit.gov.cn/">备案号：鄂ICP备2021004210号-1</a>
+	</footer>
 </template>
 
 <script lang="ts">
@@ -63,6 +66,19 @@ export default defineComponent({
 		'Nimbus Sans L', Arial, 'Liberation Sans', 'Hiragino Sans GB', 'Source Han Sans CN Normal', 'Microsoft YaHei',
 		'Wenquanyi Micro Hei', 'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
 	background: @color-bg;
+}
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	align-content: center;
+	background: @color-bg;
+	border-top: 1px solid @color-border;
+	a {
+		margin: 15px auto;
+	}
 }
 
 .main-layout {
