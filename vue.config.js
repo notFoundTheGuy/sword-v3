@@ -15,16 +15,16 @@ module.exports = {
     },
 
     devServer: {
-        // proxy: {
-        //     '/api': {
-        //         target: 'http://copyright.qa.17usoft.com',
-        //         changeOrigin: true,
-        //         headers: {
-        //             Cookie: 'access_token=99f60dbb65d431f9ca483c579d6bf4d3'
-        //         },
-        //         ws: false
-        //     }
-        // },
+        proxy: {
+            '/directory': {
+                target: 'http://1.15.98.145:9999',
+                changeOrigin: true,
+                headers: {
+                    Cookie: 'access_token=99f60dbb65d431f9ca483c579d6bf4d3'
+                },
+                ws: false
+            }
+        },
         open: true
     },
 
