@@ -1,5 +1,14 @@
 export default [
 	{
+		name: 'canvas',
+		children: [
+			{
+				name: '画板',
+				route: '/lab/painter',
+			},
+		],
+	},
+	{
 		name: '音视频',
 	},
 	{

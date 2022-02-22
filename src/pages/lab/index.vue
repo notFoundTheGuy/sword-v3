@@ -7,31 +7,34 @@
             {{ item.name }}
           </template>
 
-          <a-menu-item
-            v-for="(subItem, subIndex) in item.children"
-            :key="subIndex"
-          >
+          <a-menu-item v-for="subItem in item.children" :key="subItem.route">
             {{ subItem.name }}
           </a-menu-item>
         </a-sub-menu>
       </a-menu>
     </div>
 
-    <div class="main-content">陆续整理中。。。</div>
+    <div class="main-content">
+      <router-view></router-view>
+    </div>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
+
 import LabList from "./LabList";
 
 export default defineComponent({
   name: "Lab",
   setup(props, context) {
     let menu = ref();
+    const router = useRouter();
 
     const onMenuSelect = (item: any) => {
       console.log(item);
+      router.push(item.key);
     };
 
     onMounted(() => {
@@ -46,4 +49,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.main-content {
+  position: relative;
+}
+</style>
