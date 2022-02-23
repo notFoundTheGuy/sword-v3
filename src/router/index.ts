@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../pages/home/index.vue";
-import Blog from "../pages/Blog/index.vue";
-import BlogManage from "../pages/Blog/manage.vue";
+import Blog from "../pages/blog/index.vue";
+import BlogManage from "../pages/blog/manage.vue";
 import Lab from "../pages/lab/index.vue";
 import Writer from "../pages/Writer.vue";
 import About from "../pages/About.vue";

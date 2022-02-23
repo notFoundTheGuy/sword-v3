@@ -2,23 +2,23 @@
   <section class="lab-painter">
     <canvas id="canvas"></canvas>
     <ul class="operator">
-      <li>
+      <li @click="changePainterType('pen')">
         <Icon name="pen" size="26"></Icon>
       </li>
-      <li>
+      <li @click="changePainterType('circle')">
         <Icon name="circle" size="28"></Icon>
       </li>
-      <li>
+      <li @click="changePainterType('rect')">
         <Icon name="rect" size="28"></Icon>
       </li>
-      <li>
+      <li @click="changePainterType('eraser')">
         <Icon name="eraser" size="28"></Icon>
       </li>
-      <li>
-        <Icon name="clear" size="28"></Icon>
-      </li>
-      <li>
+      <!-- <li>
         <Icon name="colors" size="28"></Icon>
+      </li> -->
+      <li @click="clearAll()">
+        <Icon name="clear" size="28"></Icon>
       </li>
     </ul>
   </section>
@@ -38,7 +38,7 @@ export default defineComponent({
     NText,
   },
   setup(props, context) {
-    let painter, canvasEl;
+    let painter: Painter, canvasEl;
 
     // TODO: 注意处理下onresize的情况
     const calcCanvasSize = () => {
@@ -58,9 +58,40 @@ export default defineComponent({
 
       painter = new Painter({ element: "#canvas" });
       painter.paintColor = "#fc7aaf";
+      painter.paintSize = 2;
     });
 
-    return {};
+    const changePainterType = (type: string) => {
+      switch (type) {
+        case "eraser":
+          painter.useEraserTool();
+          break;
+
+        case "pen":
+          painter.usePenTool();
+          break;
+
+        case "circle":
+          painter.useCircleTool();
+          break;
+
+        case "rect":
+          painter.useRectTool();
+          break;
+
+        default:
+          break;
+      }
+    };
+
+    const clearAll = () => {
+      painter.clearAll();
+    };
+
+    return {
+      changePainterType,
+      clearAll,
+    };
   },
 });
 </script>
@@ -72,6 +103,10 @@ export default defineComponent({
     position: absolute;
     top: 0;
     left: 0;
+    cursor: url(../../../assets/cursor-pen.png) 16 16, pointer;
+    &[data-tool="eraser"] {
+      cursor: url(../../../assets/cursor-eraser.png) 16 16, pointer;
+    }
   }
 }
 .operator {
@@ -92,6 +127,7 @@ export default defineComponent({
     cursor: pointer;
     &:hover {
       background-color: rgba(112, 192, 232, 0.2);
+      color: #fc7aaf;
     }
   }
 }
