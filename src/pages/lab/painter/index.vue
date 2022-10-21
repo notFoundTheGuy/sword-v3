@@ -1,5 +1,6 @@
 <template>
   <section class="lab-painter">
+    <h1>画板 🎨</h1>
     <canvas id="canvas"></canvas>
     <ul class="operator">
       <li @click="changePainterType('pen')">
@@ -109,6 +110,13 @@ export default defineComponent({
     }
   }
 }
+
+.lab-painter {
+  h1 {
+    margin-bottom: 20px
+  }
+}
+
 .operator {
   position: relative;
   z-index: 2;
