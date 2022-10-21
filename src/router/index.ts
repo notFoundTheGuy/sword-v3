@@ -6,7 +6,8 @@ import Lab from "../pages/lab/index.vue";
 import Writer from "../pages/Writer.vue";
 import About from "../pages/About.vue";
 
-import painter from "../pages/lab/painter/index.vue";
+import Painter from "../pages/lab/painter/index.vue";
+import Lottery from "../pages/lab/lottery/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -41,7 +42,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "painter",
         name: "painter",
-        component: painter,
+        component: Painter,
+      },
+      {
+        path: "lottery",
+        name: "lottery",
+        component: Lottery,
       },
     ],
   },

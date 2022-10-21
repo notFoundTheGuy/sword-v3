@@ -6,6 +6,10 @@ export default [
 				name: '画板',
 				route: '/lab/painter',
 			},
+			{
+				name: '抽奖程序',
+				route: '/lab/lottery',
+			},
 		],
 	},
 	{
@@ -13,15 +17,15 @@ export default [
 	},
 	{
 		name: 'css特效',
-		children: [
-			{
-				name: 'Loadings',
-				route: '/lab/css/loading',
-			},
-			{
-				name: '按钮',
-				route: '/lab/css/button',
-			},
-		],
+		// children: [
+		// 	{
+		// 		name: 'Loadings',
+		// 		route: '/lab/css/loading',
+		// 	},
+		// 	{
+		// 		name: '按钮',
+		// 		route: '/lab/css/button',
+		// 	},
+		// ],
 	},
 ];
