@@ -76,11 +76,11 @@ export default defineComponent({
 					link: '/lab',
 					icon: 'box',
 				},
-				{
-					name: '组件库',
-					link: 'http://li.usts.top',
-					icon: 'catalog',
-				},
+				// {
+				// 	name: '组件库',
+				// 	link: 'http://li.usts.top',
+				// 	icon: 'catalog',
+				// },
 				{
 					name: '关于',
 					link: '/about',
