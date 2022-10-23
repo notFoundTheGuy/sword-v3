@@ -189,6 +189,7 @@ export default defineComponent({
 	}
 	#container {
 		position: relative;
+    top: -100px;
 	}
 
 	#container .meta-el {
