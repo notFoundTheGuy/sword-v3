@@ -4,18 +4,18 @@
 			<img src="@/assets/imgs/logo.png" alt="logo" width="175" />
 		</div>
 		<ul>
-			<li @mouseover="$emit('hover', 'blog')" @mouseout="onMouseOut" @click="$router.push('/blog')">
-				<Icon name="book" />
-				博客
-			</li>
 			<li @mouseover="$emit('hover', 'lab')" @mouseout="onMouseOut" @click="$router.push('/lab')">
 				<Icon name="box" />
 				实验室
 			</li>
-			<li @mouseover="$emit('hover', 'components')" @mouseout="onMouseOut" @click="openUrl('http://li.usts.top')">
+			<li @mouseover="$emit('hover', 'blog')" @mouseout="onMouseOut" @click="$router.push('/blog')">
+				<Icon name="book" />
+				博客
+			</li>
+			<!-- <li @mouseover="$emit('hover', 'components')" @mouseout="onMouseOut" @click="openUrl('http://li.usts.top')">
 				<Icon name="catalog" />
 				组件库
-			</li>
+			</li> -->
 			<li @mouseover="$emit('hover', 'about')" @mouseout="onMouseOut" @click="$router.push('/about')">
 				<Icon name="share" />
 				关于
