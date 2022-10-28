@@ -7,13 +7,19 @@ export default [
 				route: '/lab/painter',
 			},
 			{
-				name: '抽奖程序',
+				name: '抽奖',
 				route: '/lab/lottery',
 			},
 		],
 	},
 	{
 		name: '音视频',
+		children: [
+			{
+				name: '音视频录制',
+				route: '/lab/recorder',
+			},
+		],
 	},
 	{
 		name: 'css特效',

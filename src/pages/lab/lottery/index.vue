@@ -88,7 +88,6 @@ export default defineComponent({
 
 		// 在点阵中创建元素
 		const createMetaEl = (w: any, h: any, count: any, index: any) => {
-			debugger;
 			const scale = 1;
 			const metaEl = document.createElement('img');
 			metaEl.src = `https://game.gtimg.cn/images/lol/act/img/champion/${List[index]}.png`;

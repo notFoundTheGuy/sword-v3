@@ -8,6 +8,7 @@ import About from "../pages/About.vue";
 
 import Painter from "../pages/lab/painter/index.vue";
 import Lottery from "../pages/lab/lottery/index.vue";
+import Recorder from "../pages/lab/recorder/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -48,6 +49,11 @@ const routes: Array<RouteRecordRaw> = [
         path: "lottery",
         name: "lottery",
         component: Lottery,
+      },
+      {
+        path: "recorder",
+        name: "recorder",
+        component: Recorder,
       },
     ],
   },

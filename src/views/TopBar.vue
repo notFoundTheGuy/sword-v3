@@ -67,14 +67,14 @@ export default defineComponent({
 		return {
 			navList: [
 				{
-					name: '博客',
-					link: '/blog',
-					icon: 'book',
-				},
-				{
 					name: '实验室',
 					link: '/lab',
 					icon: 'box',
+				},
+				{
+					name: '博客',
+					link: '/blog',
+					icon: 'book',
 				},
 				// {
 				// 	name: '组件库',
