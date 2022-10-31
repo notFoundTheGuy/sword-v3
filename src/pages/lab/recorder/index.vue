@@ -2,6 +2,7 @@
 	<section class="recorder-wrap">
 		<div class="header">
 			<h1>自拍器🤳</h1>
+			<p>todo：额。。。因为暂未申请https证书，该功能不可用</p>
 			<NButton secondary type="primary" @click="onStop" v-show="isRecordering">停止录制</NButton>
 			<span v-show="isRecordering" class="status-bar">录制中 . . .</span>
 		</div>
@@ -86,11 +87,12 @@ export default defineComponent({
 		};
 
 		const onStartRecord = () => {
-			isRecordering.value = true;
-			recordedChunks.value = [];
-			navigator.mediaDevices
+			try {
+				navigator.mediaDevices
 				.getUserMedia(constraints)
 				.then(function(mediaStream) {
+					isRecordering.value = true;
+					recordedChunks.value = [];
 					const video: HTMLVideoElement | null = document.querySelector(
 						'video'
 					);
@@ -106,6 +108,9 @@ export default defineComponent({
 				.catch(function(err) {
 					console.log(err.name + ': ' + err.message);
 				}); // 总是在最后检查错误
+			} catch (error) {
+				alert('快去申请证书！')
+			}
 		};
 
 		const onStop = () => {
