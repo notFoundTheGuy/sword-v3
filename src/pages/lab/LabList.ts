@@ -13,6 +13,15 @@ export default [
 		],
 	},
 	{
+		name: 'svg',
+		children: [
+			{
+				name: '甘特图',
+				route: '/lab/grant',
+			},
+		],
+	},
+	{
 		name: '音视频',
 		children: [
 			{
