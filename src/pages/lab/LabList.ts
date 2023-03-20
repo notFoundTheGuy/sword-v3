@@ -1,5 +1,14 @@
 export default [
 	{
+		name: 'ChatGPT',
+		children: [
+			{
+				name: 'AI',
+				route: '/lab/ChatGPT',
+			},
+		],
+	},
+	{
 		name: 'canvas',
 		children: [
 			{
