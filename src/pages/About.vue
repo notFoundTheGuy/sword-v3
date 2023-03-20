@@ -2,6 +2,7 @@
 	<section>
 		<div class="main-content" ref="mainContent">
 			<article>
+				想到什么了再写吧 🤔
 				<div>
 					<!-- <p>积跬步以至千里！</p> -->
 					<!-- <h1 class="ttile">关于站点</h1>
@@ -19,14 +20,14 @@
 					<div>
 						最后，内向慢热型coder，但是喜欢滑板🛹，喜欢吉他🎸（虽然五音不全，不会唱歌），也想学钢琴，看烧脑片儿，喜欢探索新东西新事物。难得捡到一张人类几十年的体验卡，怎么好意思辜负呢哈哈哈哈！
 					</div> -->
-					<div>
+					<!-- <div>
 						<p>喜欢coding，</p>
 						<p>喜欢🛹，喜欢🏂，喜欢🎸</p>
 						<p>欢迎各路朋友来撩～</p>
 					</div>
 					<div class="img-wrap">
 						<img src="@/assets/imgs/qrcode-wx.jpg" alt="wx" />
-					</div>
+					</div> -->
 				</div>
 			</article>
 		</div>
